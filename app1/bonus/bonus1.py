@@ -1,12 +1,3 @@
-country = "USAs"
-while True:
-    match country:
-        case "USA" | "United States":
-            print("Hello")
-            break
-        case "Italy":
-            print("Ciao")
-        case "Germany":
-            print("Hallo")
-        case _:
-            print(country)
+def sorted_square(array):
+    return sorted( x * x for x in array )
+print(sorted_square([1,2,3]))
