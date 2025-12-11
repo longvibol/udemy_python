@@ -1,0 +1,6 @@
+with open("doc.txt") as file:
+    print(file.read())
+
+By default the open mode is 'r'
+
+So we no need to put 'r' 
