@@ -1,0 +1,66 @@
+1- Check the digit method 
+
+>>> "hello".isdigit()
+False
+>>> "hello8".isdigit()
+False
+>>> "8".isdigit()
+True
+
+- This method .isdigit() is check all inside that is digit or not 
+
+Ex:
+
+>>> "aa".isdigit()
+False
+>>> "99".isdigit()
+True
+
+
+2- check the capital 
+
+>>> "C".isupper()
+True
+>>> "8".isupper()
+False
+>>> "aC".isupper()
+False
+
+
+Note : upper() - method it will return Upper case 
+
+>>> "aC".upper()
+'AC'
+
+
+3-* check inside the list of every item is True or Fail 
+
+>> print(all(result))
+
+[True, False, False]
+
+False
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -21,7 +21,7 @@ while True:
             print(row)
 
     elif "edit" in user_action:
-        number =int(input("Enter a number: "))
+
         with open("files/todos.txt", "r") as file:
             todos = file.readlines()
 
@@ -54,6 +54,7 @@ while True:
             print("Please enter a valid number.")
 
     elif "del" in user_action:
+
         with (open("files/todos.txt", "r")) as file:
             todos = file.readlines()
 
