@@ -1,0 +1,27 @@
+>>> dir(str) 
+
+'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+
+Ex:
+
+>>> user_action = "edit add a new member"
+
+1- check contain string : .
+
+Example: it check inside the string if it have that string or not :
+
+>>> user_action.startswith("edit")
+True
+
+2- using in method 
+
+
+>>> "add" in user_action
+True
+
+EX: 
+
+user[4:] it call extract 
+
+
+
