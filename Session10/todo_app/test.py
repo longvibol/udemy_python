@@ -1,4 +1,4 @@
-def greet(message):
-    return message.title()
-g = greet("hello vibol")
-print(g)
+def sum_all(*args):
+    return sum(args)
+
+print(sum_all(1, 2, 3, 4))   # ✅ works

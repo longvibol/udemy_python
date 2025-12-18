@@ -1,8 +1,13 @@
-def get_todos():
-    with open("files/todos.txt", "r") as file_local:
+def get_todos(file_path):
+    with open(file_path, "r") as file_local:
         todos_local = file_local.readlines()
     return todos_local
 
+def write_todos(f,todos_arg):
+    with open(f, "w") as file_local:
+        file_local.writelines(todos_arg)
+
+file_path = "files/todos.txt"
 
 while True:
     user_action = input("✅Type add, edit, del, show, clear or exit: ").strip()
@@ -10,14 +15,14 @@ while True:
     if user_action.startswith("add"):
         todo = user_action[4:]
 
-        todos = get_todos()
+        todos = get_todos(file_path)
 
         todos.append(todo + "\n")
-        with open("files/todos.txt", "w") as file:
-            file.writelines(todos)
+
+        write_todos(file_path, todos)
 
     elif user_action.startswith("show"):
-        todos = get_todos()
+        todos = get_todos(file_path)
 
         for index, item in enumerate(todos):
             item = item.strip('\n')
@@ -25,7 +30,7 @@ while True:
             print(row)
 
     elif user_action.startswith("edit"):
-        todos = get_todos()
+        todos = get_todos(file_path)
 
         for index, item in enumerate(todos):
             item = item.strip('\n')
@@ -41,8 +46,7 @@ while True:
             edit_item = input("Please input your new edit: ")
             todos[index] = edit_item + "\n"
 
-            with open("files/todos.txt", "w") as file:
-                file.writelines(todos)
+            write_todos(file_path, todos)
 
             print("\nUpdated list:")
             for index, item in enumerate(todos):
@@ -55,7 +59,7 @@ while True:
             continue
 
     elif user_action.startswith("del"):
-        todos = get_todos()
+        todos = get_todos(file_path)
 
         for index, item in enumerate(todos):
             print(index + 1, "-", item.strip('\n'))
@@ -65,8 +69,7 @@ while True:
             del_item = todos[number].strip('\n')
             todos.pop(number)
 
-            with open("files/todos.txt", "w") as file:
-                file.writelines(todos)
+            write_todos(file_path, todos)
             print(f'Todo "{del_item}" has been deleted.')
 
         except (IndexError, ValueError):
