@@ -1,0 +1,97 @@
+1- Review len from PyCharm docstring : 
+
+def len(*args, **kwargs): # real signature unknown
+    """ Return the number of items in a container. """
+    pass
+
+2- Write our own docstring 
+
+Normally when we create function we should write the docstring to explain the our function :
+
+-----------------------------------------------------------------
+
+Example :  """ Read a text file and return the list of todos """
+
+
+def get_todos(filepath = "files/todos.txt"):
+    """ Read a text file and return the list of todos """
+    with open(filepath, "r") as file_local:
+        todos_local = file_local.readlines()
+    return todos_local
+
+# procedure
+def write_todos(todos_arg, filepath = "files/todos.txt"):
+    """ Write a text file to a list of todos """
+    with open(filepath, "w") as file_local:
+        file_local.writelines(todos_arg)
+
+print(help(get_todos))
+
+
+------------------------------------------------------------------
+
+
+Noted: """"" to take write the text 
+
+text ="""
+Principles of productivity:
+Managing your inflow. 
+System!
+"""
+
+print(text)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

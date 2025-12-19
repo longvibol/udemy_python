@@ -1,0 +1,142 @@
+1- Review 
+
+def get_todos(filepath):
+    with open(filepath, "r") as file_local:
+        todos_local = file_local.readlines()
+    return todos_local
+
+
+called function: todos = get_todos(file_path)
+
+2- update to default parameter 
+
+
+def get_todos(filepath = "files/todos.txt"):
+    with open(filepath, "r") as file_local:
+        todos_local = file_local.readlines()
+    return todos_local
+
+
+called function: todos = get_todos()
+
+==> we can remove the input argument 
+
+3- Review the build in method 
+
+>>> help(len)
+Help on built-in function len in module builtins:                                                                                                                                                                                      
+
+len(obj, /)
+    Return the number of items in a container.
+
+- it mean we need to have one argument to the len 
+- obj is mandatory 
+
+>>> len("Hello")
+>> 5
+
+
+if we don't put the it will get error : 
+
+>>> len()
+Traceback (most recent call last):
+  File "<python-input-4>", line 1, in <module>
+    len()
+    ~~~^^
+TypeError: len() takes exactly one argument (0 given)
+
+-------------------------------------------------------------
+
+
+Note but some of the build in method it have the default parameter 
+
+>>> help(input)
+Help on method input in module _pyrepl.readline:                                                                                                                                                                                       
+
+input(prompt: object = '') -> str method of _pyrepl.readline._ReadlineWrapper instance
+
+==> the default input is :object = '' 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

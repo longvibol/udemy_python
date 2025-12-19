@@ -1,13 +1,23 @@
-def get_todos(file_path):
-    with open(file_path, "r") as file_local:
+def get_todos(filepath = "files/todos.txt"):
+    """ Read a text file and return the list of todos """
+    with open(filepath, "r") as file_local:
         todos_local = file_local.readlines()
     return todos_local
 
-def write_todos(f,todos_arg):
-    with open(f, "w") as file_local:
+# procedure
+def write_todos(todos_arg, filepath = "files/todos.txt"):
+    """ Write a text file to a list of todos """
+    with open(filepath, "w") as file_local:
         file_local.writelines(todos_arg)
 
-file_path = "files/todos.txt"
+text ="""
+Principles of productivity:
+Managing your inflow. 
+System!
+"""
+
+print(text)
+
 
 while True:
     user_action = input("✅Type add, edit, del, show, clear or exit: ").strip()
@@ -15,14 +25,14 @@ while True:
     if user_action.startswith("add"):
         todo = user_action[4:]
 
-        todos = get_todos(file_path)
+        todos = get_todos()
 
         todos.append(todo + "\n")
 
-        write_todos(file_path, todos)
+        write_todos(todos)
 
     elif user_action.startswith("show"):
-        todos = get_todos(file_path)
+        todos = get_todos()
 
         for index, item in enumerate(todos):
             item = item.strip('\n')
@@ -30,7 +40,7 @@ while True:
             print(row)
 
     elif user_action.startswith("edit"):
-        todos = get_todos(file_path)
+        todos = get_todos()
 
         for index, item in enumerate(todos):
             item = item.strip('\n')
@@ -46,7 +56,7 @@ while True:
             edit_item = input("Please input your new edit: ")
             todos[index] = edit_item + "\n"
 
-            write_todos(file_path, todos)
+            write_todos(todos)
 
             print("\nUpdated list:")
             for index, item in enumerate(todos):
@@ -59,7 +69,7 @@ while True:
             continue
 
     elif user_action.startswith("del"):
-        todos = get_todos(file_path)
+        todos = get_todos()
 
         for index, item in enumerate(todos):
             print(index + 1, "-", item.strip('\n'))
@@ -69,7 +79,7 @@ while True:
             del_item = todos[number].strip('\n')
             todos.pop(number)
 
-            write_todos(file_path, todos)
+            write_todos(todos)
             print(f'Todo "{del_item}" has been deleted.')
 
         except (IndexError, ValueError):

@@ -1,3 +1,5 @@
+- Decoupling is simply the process of splitting or dividing the responsibilities of a function. 
+
 >>> f ="5 12"
 
 if we split this string it will return list of item 
@@ -61,7 +63,9 @@ else:
     print("Kid can use the slide.")
 
 
+----------------------------------------------------------------------------
 
+Solution with decoupling: 
 
 
 
