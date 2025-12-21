@@ -1,5 +1,4 @@
-def create_name(say="Hello world"):
-    """Say hello code!"""
-    print(say)
+from files import functions
 
-create_name("My name is vibol")
+nr_of_periods = functions.count("Trees are good. Grass is green.")
+print(nr_of_periods)

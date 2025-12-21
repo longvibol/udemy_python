@@ -1,0 +1,60 @@
+>>> {"a":1}
+{'a': 1}
+>>> x = {"a":1}
+>>> x["u"]=2
+>>> x
+{'a': 1, 'u': 2}
+
+
+Ex:
+
+import json
+
+with open('questions.json','r') as file:
+    content = file.read()
+
+data = json.loads(content)
+print(data)
+print(type(data))
+
+for question in data:
+    print(question["question_text"])
+    for index,alternatives in enumerate(question["alternatives"]):
+        print(index+1, "-",alternatives)
+    user_choice = int(input("Enter your choice: "))
+    question["user_choice"] = user_choice
+
+print(data)
+
+==> Result : 
+
+[{'question_text': 'What are dolphins?', 'alternatives': ['Amphibians', 'Fish', 'Mammals', 'Birds'], 'correct_answer': 3, 'user_choice': 1}, {'question_text': "What occupies most of the Earth's surface?", 'alternatives': ['Land', 'Water'], 'correct_answer': 2, 'user_choice': 1}]
+
+
+==> We can see the new list of : 'user_choice': 1 was add to the data 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
