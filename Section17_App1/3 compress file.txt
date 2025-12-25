@@ -1,0 +1,12 @@
+file path : we use library pathlib :
+
+យើងប្រើដើម្បីយកដែល file name 
+
+Ex: 
+
+import pathlib 
+
+filepath = pathlib.Path("Users/as/Download/a.txt")
+filepath.name 
+>> a.txt 
+

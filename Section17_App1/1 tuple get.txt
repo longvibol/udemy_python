@@ -1,0 +1,160 @@
+window = sg.Window("My To-Do App",
+                   layout=[[label],[input_box,add_button],[list_box,edit_button]],font=("Times New Roman", 20))
+while True:
+    event, values = window.read()
+    print(1,event)
+    print(2,values)
+    print(3,values["todos"])
+
+
+==> 
+
+1 todos : this is the event we get from window 
+2 {'todo': '', 'todos': ['Make soup\n']} : this is the dictionary  
+3 ['Make soup\n'] : this is the list ==> then if we want to get only the string we need to access the index[0]
+
+======================== Update : 
+
+while True:
+    event, values = window.read()
+    print(1,event)
+    print(2,values)
+    print(3,values["todos"][0])
+
+
+==> Result 
+
+1 todos
+2 {'todo': '', 'todos': ['Make soup\n']}
+3 Make soup
+
+---------------------------------
+
+If we write something inside the add list: "something" it will show to the dictionary 
+
+>>> 2 {'todo': 'Something', 'todos': ['Make soup\n']}
+
+-> យើងចង់បានយកតម្លៃនឹងទៅ eidt ចឹងយើងត្រូវតែចាប់តម្លៃនេះមកសិន
+
+ដោយសារវាជា Dictionary ចឹងដើម្បី Access the value we use the "key" 
+
+>>> 2 {'todo': 'Something', 'todos': \['Make soup\\n']}
+
+new_todo = values['todo'] 
+
+
+-------------------
+
+Update back to the input: 
+
+case "todos":
+            window["todo"].update(value=values["todos"][0])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

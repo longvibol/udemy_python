@@ -1,0 +1,48 @@
+- Break is finished from the loop : then the next line of code will execute 
+- Exit() it will end of the code. 
+
+
+improve the code :
+
+here is how we create the button : 
+
+>> edit_button = sg.Button("Edit")
+
+then if they have many of button we it will difficult to create one by one. 
+
+==> We should create the list of button name list 
+
+-------------------------------------- dynamic layout : 
+
+ 
+button_labels = ["close","Apply"]
+
+layout = []
+for bl in button_labels:
+    layout.append([sg.Button(bl)])
+
+
+-------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
