@@ -1,0 +1,7 @@
+1- install 
+
+>> pip install pyinstaller
+
+>>  pyinstaller --onefile --windowed --clean gui.py
+
+(gui.py is the python code) 

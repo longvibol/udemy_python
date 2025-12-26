@@ -1,22 +1,36 @@
 from modules import functions
 import FreeSimpleGUI as sg
 import time
+import os
 
-sg.theme("DarkBlue")
+if not os.path.exists('todos.txt'):
+    with open('todos.txt', 'w') as file:
+        pass
+
+sg.theme("NeutralBlue")
 
 def refresh_list(window):
-    # Option 2: file already contains numbering
     todos = functions.get_todos()
     window["todos"].update(values=todos)
-
 
 clock = sg.Text('', key="clock")
 label = sg.Text("Type in a to-do")
 input_box = sg.InputText(tooltip="Enter todo", key="todo")
-add_button = sg.Button("Add", bind_return_key=True, size=10)
+esc_text = sg.Text('Press (Esc) To Exit', key="esc")
+add_text = sg.Text('Press (Enter) To Add', key="esc")
+add_button = sg.Button("Add",
+    key="Add",
+    bind_return_key=True,
+    mouseover_colors="LightBlue2"
+)
 
-list_box = sg.Listbox(values=functions.get_todos(), key="todos",
-                      enable_events=True, size=(45, 10))
+list_box = sg.Listbox(
+    values=functions.get_todos(),
+    key="todos",
+    enable_events=True,
+    size=(45, 10)
+)
+
 edit_button = sg.Button("Edit")
 del_button = sg.Button("Delete", key="del")
 exit_button = sg.Button("Exit", key="exit")
@@ -25,16 +39,16 @@ layout = [
     [clock],
     [label],
     [input_box, add_button],
-    [list_box, edit_button, del_button],
-    [exit_button]
+    [list_box], [edit_button, del_button,exit_button],
+    [esc_text],[add_text]
 ]
 
-# ✅ FIX: finalize=True so you can update elements before window.read()
 window = sg.Window(
     "My To-Do App",
     layout=layout,
     font=("Times New Roman", 20),
-    finalize=True
+    finalize=True,
+    return_keyboard_events=True   # ✅ allow ESC key events
 )
 
 refresh_list(window)
@@ -42,8 +56,8 @@ refresh_list(window)
 while True:
     event, values = window.read(timeout=200)
 
-    # ✅ CLOSE FIRST (critical)
-    if event in (sg.WIN_CLOSED, "exit"):
+    # ✅ CLOSE FIRST (includes ESC)
+    if event in (sg.WIN_CLOSED, "exit", "Escape:27"):
         break
 
     # ✅ safe to update UI after close check
@@ -100,6 +114,5 @@ while True:
 
         case _:
             pass
-
 
 window.close()

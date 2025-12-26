@@ -1,0 +1,46 @@
+>>> a = [1,2,3]
+>>> b = [10,20,30]
+
+>>> x = zip(a,b)
+>>> x
+<zip object at 0x00000268CCC0D4C0>
+
+>>> list(x)
+[(1, 10), (2, 20), (3, 30)]
+
+- Zip we combine between element from a list to b list : (1, 10)
+
+Ex: Code
+
+
+contents =["All carrots are to be sliced long",
+           "The long live living",
+           "Hello Student from Python"]
+filenames=["doc.txt","report.txt","presentation.txt"]
+
+for content, filename in zip(contents, filenames):
+    file = open(f"./files/{filename}","w")
+    file.write(content)
+
+
+===>
+
+It will create three file name : "doc.txt","report.txt","presentation.txt"
+
+and put the content to it each file 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
