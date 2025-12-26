@@ -1,0 +1,139 @@
+- module and library are the same is the code building 
+
+1- Install third party library gui 
+
+Link : https://pypi.org/
+
+
+Search in the : FreeSimpleGUI
+
+==> https://pypi.org/project/FreeSimpleGUI/
+
+>> pip install FreeSimpleGUI 
+
+2-option 
+
+>> File -> Setting -> interpreter : this where the third party installed 
+
+- In gui: 
+
+from modules import functions
+import FreeSimpleGUI as sg
+
+label = sg.Text("Type in a to-do")
+input_box = sg.InputText(tooltip="Enter todo")
+add_button = sg.Button("Add")
+
+window = sg.Window("My To-Do App", layout=[[label], [input_box,add_button]])
+window.read()
+window.close()
+
+
+Explain: 
+
+layout=[[label], [input_box]]
+
+- [label] : is one row 
+- [input_box] : in below the first row 
+
+- layout : in expect the list 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

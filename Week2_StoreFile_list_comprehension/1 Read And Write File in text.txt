@@ -1,0 +1,66 @@
+1- Write text from text file 
+
+>> file = open('text.txt','w')
+>> file.writelines(['Hello\n','test\n'])
+>> file.close() - to save the file to the text 
+
+2- Read File from text 
+
+- readlines()
+
+>>> file = open('text.txt','r')
+>>> file.readlines() - read to list
+['Hello\n', 'test\n']
+
+or :read()
+
+>>> file.read() - read to line 
+'Hello\ntest\n'
+
+
+-------------------
+
+Ex code to read and write file :
+
+while True:
+    user_action = input("Type add, edit or show or exit: ").strip()
+
+    match user_action:
+        case "add":
+            todo = input("Enter a todo item: ") +"\n"
+            # open the file
+            file=open("todos.txt", "r")
+            todos = file.readlines()
+            file.close()
+
+            # we get the list of file
+            todos.append(todo)
+            file =open("todos.txt", "w")
+            file.writelines(todos)
+            file.close()
+
+
+---------------------------------------------
+
+Read file form absolute path in the pc :
+
+>>> file = open(r"C:\Users\home\Desktop\Udemy_Python Course\Week2_StoreFile\text.txt",'r')
+>>> file.readlines()
+['Hello\n', 'test\n']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

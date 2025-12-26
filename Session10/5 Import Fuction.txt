@@ -1,0 +1,199 @@
+1- main file 
+
+from functions import get_todos, write_todos
+
+When called : todos = get_todos()
+
+==> this option when we have more function we need to called them one by one 
+
+Or this is recommend : 
+
+import functions (this is called module)
+
+when called :  todos = functions.get_todos()
+
+==> easy to use and we just all the parent 
+
+2- in the functions 
+
+if we write print in the work space :
+
+def get_todos(filepath = "files/todos.txt"):
+    """ Read a text file and return the list of todos """
+    with open(filepath, "r") as file_local:
+        todos_local = file_local.readlines()
+    return todos_local
+
+# procedure
+def write_todos(todos_arg, filepath = "files/todos.txt"):
+    """ Write a text file to a list of todos """
+    with open(filepath, "w") as file_local:
+        file_local.writelines(todos_arg)
+
+print("Hello")
+
+===>
+
+when we run in the main.py it will print : "Hello" 
+
+and it is from our import function therefore we don't want to show it in the main.py we want it to work only inside their own function!
+
+
+print(__name__)
+print("Hello")
+
+==> result :
+
+__main__
+Hello
+
+
+and type it is the string :
+
+<class 'str'>
+Hello
+
+solution we put the if statement 
+
+if __name__ == "__main__":
+    print(__name__)
+    print("Hello")
+
+
+=======================================
+
+def get_todos(filepath = "files/todos.txt"):
+    """ Read a text file and return the list of todos """
+    with open(filepath, "r") as file_local:
+        todos_local = file_local.readlines()
+    return todos_local
+
+# procedure
+def write_todos(todos_arg, filepath = "files/todos.txt"):
+    """ Write a text file to a list of todos """
+    with open(filepath, "w") as file_local:
+        file_local.writelines(todos_arg)
+
+
+if __name__ == "__main__":
+    print(__name__)
+    print("Hello")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

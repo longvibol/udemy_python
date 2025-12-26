@@ -1,0 +1,95 @@
+1- Think what is the data structure look like 
+
+==> List = what we store the same thing 
+==> Dictionary : Key and Value 
+
+var = [
+    {"question": "What are dolphins", "alternatives": ["Amphibians", "Fish", "Mammals", "Birds"], "correct_answer": 3},
+    {"question": "What occupies most of the Earth's surface", "alternatives": ["Land", "Water"], "correct_answer": 2}
+    ]
+
+This is what we store the variable in the python file. 
+
+
+>> print(type(var))
+
+>> <class 'list'>
+
+
+2- We normally store in another file for the data (.json)
+
+How to convert from json string to list :
+
+2.1- read the file from the question.json 
+
+-question.json :
+
+[{"question": "What are dolphins", "alternatives": ["Amphibians", "Fish", "Mammals", "Birds"], "correct_answer": 3},
+    {"question": "What occupies most of the Earth's surface", "alternatives": ["Land", "Water"], "correct_answer": 2}
+]
+
+-main.py
+
+import json
+
+with open('questions.json','r') as file:
+    content = file.read()
+
+print(content)
+print(type(content)) 
+
+==RESULT:
+
+[{"question": "What are dolphins", "alternatives": ["Amphibians", "Fish", "Mammals", "Birds"], "correct_answer": 3},
+    {"question": "What occupies most of the Earth's surface", "alternatives": ["Land", "Water"], "correct_answer": 2}
+]
+<class 'str'>
+
+==> We can see the type is string what we want is list:
+
+therefore, we use import json to convert from str to json 
+
++ main.py 
+
+import json
+
+with open('questions.json','r') as file:
+    content = file.read()
+
+data = json.loads(content)
+print(data)
+print(type(data))
+
+==Result is list 
+
+[{'question': 'What are dolphins', 'alternatives': ['Amphibians', 'Fish', 'Mammals', 'Birds'], 'correct_answer': 3}, {'question': "What occupies most of the Earth's surface", 'alternatives': ['Land', 'Water'], 'correct_answer': 2}]
+<class 'list'>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

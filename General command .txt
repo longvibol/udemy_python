@@ -1,0 +1,5 @@
+1- check install library 
+
+>> pip list 
+
+or pip show FreeSimpleGUI

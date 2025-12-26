@@ -1,0 +1,97 @@
+- Decoupling is simply the process of splitting or dividing the responsibilities of a function. 
+
+>>> f ="5 12"
+
+if we split this string it will return list of item 
+
+>>> f_list = f.split(" ")
+
+['5', '12']
+>>> f_list[1]
+
+Ex2:
+
+>>> "hey-vibol-how-are-you".split("-")
+['hey', 'vibol', 'how', 'are', 'you']
+
+
+-------------------------------
+
+Decoupling : convert from string to integer 
+
+Code: 
+
+feet_inches = input("Enter feet and inches: ")
+
+def convert(feet_inches):
+    parts = feet_inches.split(" ")
+    feet = float(parts[0])
+    inches = float(parts[1])
+    meters = feet * 0.3048 + inches * 0.0254
+    return f"{feet} feet and {inches} inches is equivalent to {meters} meters."
+
+result = convert(feet_inches)
+
+if result < 1:
+    print("Kid is too small.")
+else:
+    print("Kid can use the slide.")
+
+
+----
+
+result = convert(feet_inches) is the string we can not compare to the integer that why we can use 
+decoupling 
+
+
+==> solution in the function we return only the value that we want and prevend string with integer 
+
+feet_inches = input("Enter feet and inches: ")
+
+def convert(feet_inches):
+    parts = feet_inches.split(" ")
+    feet = float(parts[0])
+    inches = float(parts[1])
+    return feet * 0.3048 + inches * 0.0254
+
+
+result = convert(feet_inches)
+
+if result < 1:
+    print("Kid is too small.")
+else:
+    print("Kid can use the slide.")
+
+
+----------------------------------------------------------------------------
+
+Solution with decoupling: 
+
+feet_inches = input("Enter feet and inches: ")
+
+def parse(feetinches):
+    parts = feetinches.split(" ")
+    feet = float(parts[0])
+    inches = float(parts[1])
+    return feet, inches
+
+def convert(feet, inches):
+    return feet * 0.3048 + inches * 0.0254
+
+feet_inches_tuple = parse(feet_inches)
+print(feet_inches_tuple)
+result = convert(feet_inches_tuple[0], feet_inches_tuple[1])
+
+=======================================
+
+
+
+
+
+
+
+
+
+
+
+
