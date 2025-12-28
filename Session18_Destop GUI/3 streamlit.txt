@@ -1,0 +1,20 @@
+1-write html inside the streamlit
+
+st.write("<h1>This app is to increase your productivity</h1>",unsafe_allow_html=True)
+
+
+- unsafe_allow_html=True : default is false 
+
+- it is working only in the st.write 
+
+2- set reponsesive 
+
+st.set_page_config(layout="wide")
+
+
+3- Create another pages:
+
+- Create new directory : pages 
+- Create About.py 
+
+Then it will create the payge for us. 
