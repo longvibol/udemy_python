@@ -1,0 +1,139 @@
+- pandas = is the data analysic 
+
+Ex:
+
+>>> import pandas as pd
+>>> df = pd.read_csv("topics.csv")
+
+>>> for index,row in df.iterrows():
+...     print(index)
+
+- index is from 0 to end 
+- row is the data 
+
+Ex:
+
+Order            1
+Topic    Variables
+Pages            2
+Name: 0, dtype: object
+Order        2
+Topic    Lists
+Pages        3
+Name: 1, dtype: object
+Order            3
+Topic    Functions
+Pages  	 3
+
+==> 
+
+
+Order,Topic,Pages
+1,Variables,2
+2,Lists,3
+3,Functions,3
+
+---------------------------------------------------------------------
+
+
+1- iterate to the data 
+
+>>> for index,row in df.iterrows():
+...     print(row["Topic"])
+
+Variables
+Lists
+Functions
+While-loop
+
+
+or option :
+
+>>> for index,row in df.iterrows():
+...     print(index,row["Topic"])
+...     
+0 Variables
+1 Lists
+2 Functions
+3 While-loop
+4 Methods
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

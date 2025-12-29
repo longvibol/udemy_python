@@ -1,0 +1,23 @@
+1- Create file 
+
+>> touch file.txt 
+
+>> touch file1.py
+
+2- find 
+
+>> find *.txt 
+
+or 
+
+>>. ls *.txt 
+
+3- deleted directory 
+
+>> mkdir data 
+
+>> rm -r data 
+
+4- copy 
+
+>> $ cp file1.txt data/
