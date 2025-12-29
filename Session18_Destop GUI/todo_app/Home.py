@@ -30,4 +30,7 @@ for index, todo in enumerate(todos):
 st.text_input(label="New todo",placeholder="Add a new todos...",
               on_change=add_todo,key="add_todo")
 
+st.slider("Amout",min_value=0,max_value=100,value=5,key="slider")
+st.subheader("This is my second app")
+
 st.session_state
