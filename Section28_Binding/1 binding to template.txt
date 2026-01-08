@@ -1,0 +1,40 @@
+1- main file
+
+from flask import Flask, render_template
+import pandas as pd
+
+app = Flask(__name__)
+dic = pd.read_csv("dictionary.csv")
+
+stations = pd.read_csv("data_small/stations.txt", skiprows=17)
+stations = stations[["STAID","STANAME                                 "]]
+
+@app.route("/")
+def home():
+    return render_template("home.html", data = stations.to_html())
+
+
+2- home page : <p>{{data | safe}}</p>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Data API</title>
+</head>
+<body>
+
+<h1>Weather Data API</h1>
+<p>URL format: http://127.0.0.1:5000/api/v1/station/date</p>
+<p>URL format: http://127.0.0.1:5000/api/v1/10/1990-10-30</p>
+
+<h1>Dictionary</h1>
+
+<p>URL format: http://127.0.0.1:5000/api/v2/word</p>
+<p>URL format: http://127.0.0.1:5000/api/v2/casing</p>
+
+<p>{{data | safe}}</p>
+
+
+</body>
+</html>
