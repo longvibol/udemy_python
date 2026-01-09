@@ -1,0 +1,23 @@
+សម្រាប់ បង្កើត Plot : 
+
+>>> import plotly.express as px
+
+
+>>> dir(px)
+
+['Constant', 'IdentityMap', 'NO_COLOR', 'Range', '__all__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__path__', '__spec__', '_chart_types', '_core', '_doc', '_imshow', '_special_inputs', 
+
++ what they can do: 
+
+'area', 'bar', 'bar_polar', 'box', 'choropleth', 'choropleth_map', 'choropleth_mapbox', 'colors', 'data', 'defaults', 'density_contour', 'density_heatmap', 'density_map', 'density_mapbox', 'ecdf', 'funnel', 'funnel_area', 'get_trendline_results', 'histogram', 'icicle', 'imshow', 'imshow_utils', 'line', 'line_3d', 'line_geo', 'line_map', 'line_mapbox', 'line_polar', 'line_ternary', 'np', 'optional_imports', 'parallel_categories', 'parallel_coordinates', 'pie', 'scatter', 'scatter_3d', 'scatter_geo', 'scatter_map', 'scatter_mapbox', 'scatter_matrix', 'scatter_polar', 'scatter_ternary', 'set_mapbox_access_token', 'strip', 'sunburst', 'timeline', 'treemap', 'trendline_functions', 'violin']
+
+
+Ex: plot line:
+
+syntax:
+
+figure = px.line(x, y, labels)
+
+- x, y is the Array[] or it is the list of Object 
+- labels = need the dictionary 
+
