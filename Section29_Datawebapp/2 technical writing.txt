@@ -1,0 +1,16 @@
+1- To get the load up not error :
+
+>> place = "" 
+>> if place:
+	print("Yes")
+
+==> No printing anything because place is emptly string 
+
+---------------------------
+
+>> place = "Hello"
+>> if place:
+	print("Yes"
+
+==> Result is Yes 
+
