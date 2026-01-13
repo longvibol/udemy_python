@@ -1,0 +1,90 @@
+Sentiment Analysis : ចង់ដឹងថាវាមានអារម្មណ៍យ៉ាងម្តេច ល្អ អាក្រក់ វាទំនោទៅ ល្អ ឬ អាក្រក់
+
+1. download 
+
+import nltk
+nltk.download("vader_lexicon")
+
+
+2- working with sentiment 
+
+- create object :
+
+from nltk.sentiment import SentimentIntensityAnalyzer
+analyzer = SentimentIntensityAnalyzer()
+
+score = analyzer.polarity_scores("Hey, look how bad the trees are. I hate them. I really hate them.")
+
+score {'neg': 0.548, 'neu': 0.452, 'pos': 0.0, 'compound': -0.8979}
+
+if score["pos"] > score["neg"]:
+    print("It is a positive text")
+else:
+    print("It is a negative text")
+
+==> It is a negative text
+
+Note : we can put String object of : sentence, paragraph , or article 
+
+--------------------------------------------------------------------------
+
+Example1 : whole book
+
+
+with open("miracle_in_the_andes.txt", "r", encoding="utf-8") as file:
+    book = file.read()
+
+analyzer.polarity_scores(book)
+
+
+{'neg': 0.116, 'neu': 0.76, 'pos': 0.125, 'compound': 1.0}
+
+
+Example2: by chapter
+
+import re
+pattern = re.compile("Chapter [0-9]+")
+chapters = re.split(pattern, book)
+chapters = chapters[1:]
+
+for nr, chapter in enumerate(chapters):
+    scores =  analyzer.polarity_scores(chapter)
+    print(f"Chappter {nr+1}, Scores {scores}")
+
+============================================================= Result 
+
+
+Chappter 1, Scores {'neg': 0.061, 'neu': 0.779, 'pos': 0.16, 'compound': 1.0}
+Chappter 2, Scores {'neg': 0.12, 'neu': 0.726, 'pos': 0.154, 'compound': 0.9991}
+Chappter 3, Scores {'neg': 0.145, 'neu': 0.751, 'pos': 0.105, 'compound': -0.9999}
+Chappter 4, Scores {'neg': 0.141, 'neu': 0.721, 'pos': 0.138, 'compound': -0.9963}
+Chappter 5, Scores {'neg': 0.118, 'neu': 0.742, 'pos': 0.141, 'compound': 0.9997}
+Chappter 6, Scores {'neg': 0.124, 'neu': 0.761, 'pos': 0.115, 'compound': -0.9979}
+Chappter 7, Scores {'neg': 0.136, 'neu': 0.761, 'pos': 0.103, 'compound': -0.9999}
+Chappter 8, Scores {'neg': 0.12, 'neu': 0.786, 'pos': 0.094, 'compound': -0.9998}
+Chappter 9, Scores {'neg': 0.097, 'neu': 0.824, 'pos': 0.079, 'compound': -0.9996}
+Chappter 10, Scores {'neg': 0.086, 'neu': 0.733, 'pos': 0.181, 'compound': 1.0}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

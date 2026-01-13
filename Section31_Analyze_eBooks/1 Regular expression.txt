@@ -1,3 +1,18 @@
+
+Note: on the Regex 
+
+| Pattern              | Meaning                 |
+| -------------------- | ----------------------- |
+| `[a-zA-Z]`           | one letter              |
+| `[a-zA-Z ]`          | one letter or space     |
+| `[a-zA-Z]+`          | many letters            |
+| `[a-zA-Z ]+`         | many letters and spaces |
+| `+` **outside** `[]` | repetition              |
+| `+` **inside** `[]`  | literal `+` character   |
+
+
+
+
 1- Regular expression is what we use the code to do the filter 
 
 - Create the pattern to get the sentence 
