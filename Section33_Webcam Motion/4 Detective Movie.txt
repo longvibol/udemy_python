@@ -1,0 +1,136 @@
+Algorithm : 1 photo is one frame : 
+
+ដើម្បីធ្វើការកំណត់ថា មានអីបំលាស់ទី យើងត្រូវធ្វើការ ប្រៀបធៀប រវាង  Frame01 to Other Frame02-03-04...0N
+
+1- Convert to Gray color 
+
+- to save the space and can make the image more clear to compare 
+
+2- Convert to Gray Color:
+
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+3- Gaussian to make the effective:
+
+    gray_frame_gau = cv2.GaussianBlur(gray, (21, 21), 0)
+
+    cv2.imshow("My Video", gray_frame_gau)
+
+4- how to get the first frame 
+
+អោយវា None សិន បន្ទាប់មកធ្វើការប្រៀបធៀប ទៅ next Frame 
+first_frame =  None
+
+
+    if first_frame is None:
+        first_frame = gray_frame_gau
+
+    delta_frame = cv2.absdiff(first_frame, gray_frame_gau)
+
+
+5- classification : make background to black and object moving to white (Threshold)
+
+
+- ពេលវាដើរដំបូង data_fram is nearly to Zero ( 0 មានន័យថាអត់មាន វាពណ៌ ខ្មៅ) 
+- ពេលដែលមាន Object ចូលមកវាប្រែទិន្នន័យទៅជា white 255
+
+យើងចឹងបង្កើត កំរិត ដែលធ្វើអោយវាទៅ ជា 0 or 255 it called "Threshold" 
+
+
+ thresh_frame = cv2.threshold(delta_frame, 30, 255, cv2.THRESH_BINARY)[1]
+
+- Explain : 
+
+- cv2.threshold : method to create threshold 
+- delta_frame : is our object 
+- 30, 255 : if it near to 30 then turn it to 255 
+- cv2.THRESH_BINARY : algorithem 
+- [1] : extrac from list index 1 
+
+**** យើងចង់បាន Object ទៅជា ពណ៍ ស ហើយ Background to Black ****
+
+
+6- smoother the image
+
+    dil_frame = cv2.dilate(thresh_frame, None, iterations=2)
+
+
+7- Create contours about the object (around the white area)
+
+
+contours ,check = cv2.findContours(dil_frame, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+- countours : it will return the list object that have in the video 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

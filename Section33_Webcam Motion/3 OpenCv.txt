@@ -1,0 +1,146 @@
+1- Scan port for the camera :
+
+------------------------------------------------
+
+import cv2
+
+for i in range(10):
+    cap = cv2.VideoCapture(i, cv2.CAP_DSHOW)
+    ok = cap.isOpened()
+    print(i, "->", ok)
+    cap.release()
+
+
+------------------------------------------------
+
+==> 
+
+0 -> True
+1 -> True
+
+3 -> False
+-
+-
+10 -> False
+
+So we can test for the 0 and 1 for the capture image. 
+
+
+2- Code to capture image 
+
+import cv2
+
+video = cv2.VideoCapture(1)
+check, frame = video.read()
+
+print(check)
+print(frame)
+
+
+==> Result 
+
+True
+[[[0 0 0]
+  [0 0 0]
+  [0 0 0]
+  …
+
+
+- True : 
+
+- [[[0 0 0]
+  [0 0 0]
+  [0 0 0]
+
+==> this is object type = these 0 here is the Frame 
+
+Example :
+
+import cv2
+import time
+
+video = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+
+check1, frame1 = video.read()
+time.sleep(1)
+
+check2, frame2 = video.read()
+time.sleep(1)
+
+chek3, frame3 = video.read()
+
+print(frame3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
