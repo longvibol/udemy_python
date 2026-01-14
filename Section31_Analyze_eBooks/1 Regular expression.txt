@@ -1,0 +1,209 @@
+
+Note: on the Regex 
+
+| Pattern              | Meaning                 |
+| -------------------- | ----------------------- |
+| `[a-zA-Z]`           | one letter              |
+| `[a-zA-Z ]`          | one letter or space     |
+| `[a-zA-Z]+`          | many letters            |
+| `[a-zA-Z ]+`         | many letters and spaces |
+| `+` **outside** `[]` | repetition              |
+| `+` **inside** `[]`  | literal `+` character   |
+
+
+
+
+1- Regular expression is what we use the code to do the filter 
+
+- Create the pattern to get the sentence 
+
+Ex: Chapter [0-9]
+
+
+2- with python 
+
+- Regex is working with the string 
+
+Example: 
+
+# this is already inside the python 
+
+import re
+
+pattern = re.compile("Chapter [0-9]+")
+findings = re.findall(pattern, book)
+
+>>
+
+['Chapter 1',
+ 'Chapter 2',
+ 'Chapter 3',
+ 'Chapter 4',
+ 'Chapter 5',
+ 'Chapter 6',
+ 'Chapter 7',
+ 'Chapter 8',
+ 'Chapter 9',
+ 'Chapter 10']
+
+------------------
+
+Explain: 
+
+[0-9] : find digit number 
++ : tell it have more than 1 digit 
+
+
+3- Find sentence 
+
+- [a-zA-Z] : find from a to z charater 
+- [a-zA-Z]* : * mean can have more charater 
+- [^.] : match everything but not the . (not have . inside)
+- {1} : one charater only or if we need more we can put {2}
+
+EX: [A-Z]{1} match case Capital case only one charater 
+
+
+-----------------------------------
+
+What are the most used words?
+
+Stop work mean : the word that mostly using in the artical 
+Ex:
+
+[(5346, 'the'),
+ (2795, 'and'),
+ (2729, 'i'),
+ (2400, 'to'),] 
+
+---------------------------------------
+
+Exercise:
+
+[^\n] :  not have \n (ចុះបន្ទាត់)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

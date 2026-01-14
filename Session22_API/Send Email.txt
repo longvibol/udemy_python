@@ -1,0 +1,47 @@
+Send Email :
+
+- Google account : app password 
+
+https://myaccount.google.com/apppasswords
+
+Create password :
+
+- code 
+
+import smtplib, ssl
+
+
+def send_email(message):
+    host = "smtp.gmail.com"
+    port = 465
+
+    username = "vibollong@gmail.com"
+    password = "aajd yjml zpje jtys"
+
+    receiver = "vibollong@gmail.com"
+    context = ssl.create_default_context()
+
+    with smtplib.SMTP_SSL(host, port, context=context) as server:
+        server.login(username, password)
+        server.sendmail(username, receiver, message)
+        
+
+send_email("Hello, how are you?")
+
+
+--------------------
+
+✅ How to make App Passwords appear (step-by-step fix)
+Option A — Turn off “Skip password when possible” (Recommended)
+
+Go to Google Account → Security
+
+Find Skip password when possible
+
+Turn it OFF
+
+Sign out of your Google account
+
+Sign back in
+
+Visit 👉 https://myaccount.google.com/apppasswords

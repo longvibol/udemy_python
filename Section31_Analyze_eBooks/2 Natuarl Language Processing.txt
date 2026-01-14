@@ -1,0 +1,99 @@
+where to use natural language: nlt 
+
+- google map review what is their command  
+- social media command 
+- grammar checker 
+- email Spam checker 
+- google searching (they analay where you chatting) 
+- google translate 
+- Chatbot 
+
+1- check version of py in jupyter
+
+from platform import python_version
+python_version()
+
+2- install nltk 
+
+import sys
+!{sys.executable} -m pip install nltk
+
+
+3- working stopwords 
+
+- download "stopwords"
+
+>> import nltk
+>> nltk.download("stopwords")
+
+
+Example: Cross check with the stopwords 
+
+- We have list of tuple : 
+
+>> d_list
+
+# We get the list of tuple [(5346, 'the'),
+ # (2795, 'and'),
+ # (2729, 'i'),
+ # (2400, 'to'),]
+
+These are have many works that it called stop words such as : is , a , this, the , go, to 
+
+==> we do not count the stop work 
+==> we do the cross check d_list and stopwords 
+
+--------------------------------------------------
+
+filtered_words = []
+for (count, word) in d_list:
+    if word not in english_stopwords:
+        filtered_words.append((word, count))
+filtered_words
+
+
+--------------------------------------------------
+
+if we want to add our list:
+
+own_stopword = ['would','us','said','could','one','go']
+filtered_words = []
+for (count, word) in d_list:
+    if word not in english_stopwords and word not in own_stopword:
+        filtered_words.append((word, count))
+filtered_words[:5]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+- API GET Data for 5 days
+
+- Observation every 8 hour check one time for 1 day 
+
+==> 5 day = 40 values = 80 data 
+
+Ex: we want to get the data for 2 days 
+
+==> 2 day * 8 value = 16 value of data need to get 
+
+==> filtered_data = filtered_data[:8*forcast_days]
+

@@ -1,0 +1,28 @@
+1- import pandas 
+
+import pandas as pd
+
+2- get data from csv 
+
+df = pd.read_csv("data_small/TG_STAID000001.txt", skiprows=20, parse_dates=["    DATE"])
+
+sample :
+
+STAID, SOUID,    DATE,   TG, Q_TG
+     1, 35381,18600101,   21,    0
+     1, 35381,18600102,   46,    0
+     1, 35381,18600103,   31,    0
+     1, 35381,18600104,   37,    0
+
+
+3- running 
+
+>> df 
+
+or
+
+>> df.head()
+
+4- create new cell
+
+Use Alt+Enter to create new command line

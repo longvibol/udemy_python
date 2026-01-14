@@ -1,0 +1,24 @@
+1-install jupyther-lab
+
+>> py -3.14 pip install jupyterlab
+
+2- start jupyther 
+
+>>jupyther-lab
+
+3- short cut
+
+- new line : Esc then B 
+
+- excercute code : Ctlr + Enter 
+
+
+4- Create Remark 
+
+- Create update command : >> Click A (create new command )
+- Create remark : m ( # to create size of the remark ; ## this is smaller)
+
+5- cc to copy the cell then v to parse 
+
+6- dd to delete 
+

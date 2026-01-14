@@ -1,0 +1,56 @@
+- Perspective 
+In one pixel it have : Array to represent the color 
+
+
+[187 41 160] : បី លេខ នឹងតំណាងអោយ មួយ ពណ៍ = 1 Pixel 
+
+- 187 Is the amount of BLUE 
+- 41 : GREEN 
+- 160 : RED 
+
+
+---------------- Maximum value of the color 
+
+B : 255
+G : 255
+R : 255
+
+
+------------------
+
+White color : 255
+Black color : 0 
+
+
+------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+

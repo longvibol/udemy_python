@@ -1,0 +1,51 @@
+1- install all requirement 
+
+
+>> pip install -r requirements.txt 
+
+2- todo list api key 
+
+https://app.todoist.com/app/settings/integrations/developer
+
+3- in the app create file .env 
+
+
+TODOLIST_API_KEY=b32a2d4395def3c27b2c7d55e84dc2722565d96c
+GEMINI_API_KEY=AIzaSyAHQZh3PX7oogzht7Hz2pqXi2mDWu_e9tc
+
+=====================
+
+Link :
+
+Todo :https://app.todoist.com/app/settings/integrations/developer
+
+Gemini : https://aistudio.google.com/app/api-keys
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

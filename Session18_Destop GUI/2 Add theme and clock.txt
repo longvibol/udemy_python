@@ -1,0 +1,20 @@
+1- Add theme
+
+sg.theme("DarkBlue")
+
+
+2- add time
+
+import time
+
+
+clock = sg.Text('', key="clock")
+
+while True:
+    event, values = window.read(timeout=200)
+
+# ✅ safe to update UI after close check
+
+    window["clock"].update(time.strftime("%b %d, %Y %H:%M:%S"))
+
+window.close()

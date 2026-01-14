@@ -1,0 +1,18 @@
+with open("doc.txt") as file:
+    print(file.read())
+
+By default the open mode is 'r'
+
+So we no need to put 'r' 
+
+-------------------
+
+Note on the read file :
+
+with open("doc.txt") as file:
+    file.read()
+    print(file.read())
+
+
+when it read the first line from : file.read() then after we use print(file.read()) it will show nothing ! 
+

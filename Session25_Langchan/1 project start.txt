@@ -1,0 +1,12 @@
+1- install langchain with ollama :
+
+>> pip install -U langchain-ollama
+
+
+or 
+
+2- pip install langchain-google-genai
+
+GEMINI_API_KEY=AIzaSyDv-Y7ejuIO89RQblDlGfgTpAT10i5VY9o
+
+3- install dotevn 

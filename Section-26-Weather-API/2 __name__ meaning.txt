@@ -1,0 +1,11 @@
+- file : a.py
+
+print(__name__)
+
+==> value of __name__ = main 
+
+- file : b.py 
+
+import a 
+
+when print => វានឹងទៅហើយ file a.py មក ចឹង នៅក្នុង a.py : name = a (file name) 

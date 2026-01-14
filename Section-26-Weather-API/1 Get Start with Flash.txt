@@ -1,0 +1,124 @@
+1- install flash 
+
+>> pip install flash
+
+2- Create page 
+2.1 Create folder to store template 
+
+>> template >> name.html 
+
+2.2 to store the image we create another folder 
+
+>> static >> image.png 
+
+============================
+
+Main.py :
+
+-------------------------------------------
+
+
+from flask import Flask, render_template
+
+app = Flask("Website with flask")
+
+@app.route("/home/")
+def home():
+    return render_template("tutorial.html")
+
+
+@app.route("/about/")
+def about():
+    return render_template("about.html")
+
+app.run(debug=True)
+
+
+------------------------------------
+
+Template : 
+
+tutorial.hmtl 
+
+--------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <nav>
+        <a href="/about">About</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/store">About</a>
+    </nav>
+    <h1>Welcome</h1>
+    <h2>This is our webpage</h2>
+    <p>Hello, this is our first webpage.</p>
+
+    <img src="{{ url_for('static', filename='cat.png') }}" style="width: 500px">
+
+    <br>
+    <br>
+    <a href="https://google.com">Google</a>
+
+</body>
+</html>
+
+
+
+---------------------
+
+How to put the image:   <img src="{{ url_for('static', filename='cat.png') }}" style="width: 500px">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
