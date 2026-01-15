@@ -1,15 +1,21 @@
-from bdb import effective
-
 import cv2
 import time
+
+import numpy as np
+
+from emailing import send_email
 
 video = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 time.sleep(1)
 
 first_frame =  None
+status_list = []
 
 while True:
+    status = 0
+    # Read the frame
     check, frame = video.read()
+
     #1 Convert to Gray Color
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
@@ -33,10 +39,20 @@ while True:
 
     for contour in contours:
         # if it is the face object we continue to the loop again
-        if cv2.contourArea(contour) < 1000:
+        if cv2.contourArea(contour) < 5000:
             continue
         x, y, w, h = cv2.boundingRect(contour)
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 3)
+        rectangle = cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 3)
+        if rectangle.any():
+            status = 1
+
+    status_list.append(status)
+    status_list = status_list[-2:]
+
+    if status_list[0] == 1 and status_list[1] == 0:
+        send_email()
+
+    print(status_list)
 
     cv2.imshow("Video", frame)
 
