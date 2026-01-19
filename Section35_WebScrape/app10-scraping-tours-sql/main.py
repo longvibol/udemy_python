@@ -41,6 +41,6 @@ if __name__ == "__main__":
         if extracted != "No upcoming tours":
             if extracted not in content:
                 store(extracted)
-                send_email(message="The tour has been scraped successfully")
+                send_email(message="The tour has been scraped and Sent Email successfully")
                 print("The tour has been scraped successfully")
         time.sleep(1)

@@ -24,31 +24,16 @@ def extract(source):
 
 
 def store(extracted):
-    row = extracted.split(',')
-    row = [item.strip() for item in row]
+    now = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
     cursor = connection.cursor()
-    cursor.execute("INSERT INTO temperature VALUES (?,?)", row)
+    cursor.execute("INSERT INTO temperature VALUES (?,?)", (now, extracted))
     connection.commit()
 
-def read(extracted):
-    row = extracted.split(',')
-    row = [item.strip() for item in row]
-    date, tem = row
-    cursor = connection.cursor()
-    cursor.execute("SELECT * FROM temperature WHERE date=? AND tem=?", (date, tem))
-    rows = cursor.fetchall()
-    return rows
 
 if __name__ == "__main__":
     while True:
         scraped = scrape(URL)
         extracted = extract(scraped)
-        s = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-        extracted = f"{s},{extracted}"
+        store(extracted)
         print(extracted)
-
-        if extracted != "No upcoming tours":
-            row = read(extracted)
-            if not row:
-                store(extracted)
         time.sleep(2)
