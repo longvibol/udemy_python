@@ -1,0 +1,273 @@
+What is web scraping ?
+
+- Is about extracting information from a webpage and storing it as structured data in a text file 
+or CSV file or Excel file or SQL database 
+
+- there are two part of extracting the information from the webpage 
+
++ first : we scraping the row 
++ second : we parse to the data
+
+==> extract and store 
+1- Step by Step 
+
+Input data --> Output data 
+
+Get the first page :
+
+import requests
+import selectorlib
+
+
+URL = "https://programmer100.pythonanywhere.com/tours/"
+HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+
+def scrape(url, headers=HEADERS):
+    """Scrape the page source from the URL"""
+    response = requests.get(url)
+    source = response.text
+    return source
+
+if __name__ == "__main__":
+    print(scrape(URL))
+
+
+-----------------------------------------------------------
+
+2- Extract the data from the web 
+
+def extract(source):
+    """Extract all the links from the source page"""
+    extractor = selectorlib.Extractor.from_yaml_file("extract.yaml")
+    values = extractor.extract(source)['tours']
+    return values
+
+Explain: 
+
+- selectorlib.Extractor.from_yaml_file("extract.yaml")
+-  values = extractor.extract(source)['tours'] : this will return the dictionary 
+
+
+
+We create file .yaml 
+
+
+--------------------------------------------------------------------
+
+
+tours:
+  css: '#displaytimer'
+
+
+--------------------------------------------------------------------
+
+Tours: we can put anything and it use for the key in the dictionary 
+- #displaytimer : this is the id from the web where we want to take the data 
+
+<h1 align="right " id="displaytimer">Feng Suave, Minimalia City, 5.5.2089</h1>
+
+
+#displaytimer
+
+how to copy : copy as the selector 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
