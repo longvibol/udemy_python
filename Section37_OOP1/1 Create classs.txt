@@ -36,6 +36,30 @@ def __init__(self):
         self.connection = sqlite3.connect("temdatabase.db") 
 
 ==> the same as this 
+==> and self is the first creation when we create the instance 
+
+Example :
+
+class Database:
+    def __init__(self, database_path):
+        self.connection = sqlite3.connect(database_path)
+
+    def store(self, extracted):
+        row = extracted.split(',')
+        row = [item.strip() for item in row]
+        cursor = self.connection.cursor()
+        cursor.execute("INSERT INTO temperature VALUES (?,?)", row)
+        self.connection.commit()
+
+    def read(self, extracted):
+        row = extracted.split(',')
+        row = [item.strip() for item in row]
+        date, tem = row
+        cursor = self.connection.cursor()
+        cursor.execute("SELECT * FROM temperature WHERE date=? AND tem=?", (date, tem))
+        rows = cursor.fetchall()
+        return rows
+
 
 
 
