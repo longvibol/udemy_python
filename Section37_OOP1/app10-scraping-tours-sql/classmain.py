@@ -23,8 +23,8 @@ class Event:
 
 
 class Database:
-    def __init__(self):
-        self.connection = sqlite3.connect("temdatabase.db")
+    def __init__(self, database_path):
+        self.connection = sqlite3.connect(database_path)
 
     def store(self, extracted):
         row = extracted.split(',')
@@ -52,7 +52,7 @@ if __name__ == "__main__":
         print(extracted)
 
         if extracted != "No upcoming tours":
-            database = Database()
+            database = Database(database_path="temdatabase.db")
             row = database.read(extracted)
             if not row:
                 database.store(extracted)
