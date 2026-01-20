@@ -1,0 +1,62 @@
+1- Capture image 
+
+Every 1 second have 30 images capture 
+
+Note
+
+library glob : use for collect stm to the list 
+
+Ex: 
+
+We have image extension .jpg 
+
+==> we want to collect them to the list 
+
+>>> import glob
+>>> all_images = glob.glob(f"images/*.png")
+>>> all_images
+
+
+['images\\1.jpg', 'images\\10.jpg', 'images\\11.jpg', 'images\\12.jpg']
+
+
+2- Concept : we want to save the best clear photo : it is always around the middle 
+
+- find the amount of object image capture : then convert it to the integer (find the index from the list]
+
+all_images = glob.glob(f"images/*.png")
+index = int(len(all_images)/2)
+image_with_object = all_images[index]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

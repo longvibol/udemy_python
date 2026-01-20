@@ -1,0 +1,8 @@
+1- YouTube : it check copy right by compare the frame of the video 
+2- Facebook : it convert from the photo to the description 
+3- GIS: convert the color image to identify the area 
+4- Phone unlock : it take the first photo to compare with our current 
+5- Self driving car: 
+
+
+

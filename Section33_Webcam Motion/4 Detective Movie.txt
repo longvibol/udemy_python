@@ -63,6 +63,53 @@ contours ,check = cv2.findContours(dil_frame, cv2.RETR_EXTERNAL, cv2.CHAIN_APPRO
 - countours : it will return the list object that have in the video 
 
 
+8- create the status to check the object wash moving 
+
+- status_list = [] 
+
+in the while loop :
+
+- when start make it 0 for the status 
+status = 0
+
+- ពេលដែលមាន object ចូលមក យើងអោយវា status = 1
+
+- ហើយយើងយក ១ នឹងដាក់ចូល status_list = [] 
+status_list.append(status)
+
+==> [1,1,1,1,1,....] យើងមើលទៅវាសុទ្ធតែមួយ 
+
+- Condition check 
+
+យើងចាប់យកអា 2 element ចុងក្រោយ 
+
+[1,1]
+
+- check condition : [1,0]
+
+1 - មាន object in the background 
+0 - ពេល object leave from the camera 
+
+    if status_list[0] == 1 and status_list[1] == 0:
+        send_email()
+
+==> so we send at this time !
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
