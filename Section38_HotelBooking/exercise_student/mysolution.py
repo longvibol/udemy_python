@@ -1,41 +1,41 @@
 import pandas as pandas
 from fpdf import FPDF
 
-df = pandas.read_csv("Resources/articles.csv")
+df = pandas.read_csv("Resources/articles.csv", dtype={"id": str})
 
 
-class Item:
-    def __init__(self, item_id):
-        self.item_id = item_id
+class Article:
+    def __init__(self, article_id, article_buy):
+        self.id = article_id
+        self.article_buy = int(article_buy)
 
-    def receipt_pdf_print(self):
-        # Get article name
-        article_series = df.loc[df["id"] == self.item_id, "name"]
-        if article_series.empty:
-            raise ValueError(f"Item id {self.item_id} not found in CSV.")
-        article = str(article_series.squeeze()).title()
+        self.name = df.loc[df['id'] == self.id, 'name'].squeeze()
+        self.price = float(df.loc[df['id'] == self.id, 'price'].squeeze())
+        self.in_stock = int(df.loc[df['id'] == self.id, 'in stock'].squeeze())
 
-        # Get price
-        price_series = df.loc[df["id"] == self.item_id, "price"]
-        price = price_series.squeeze()
+    def stock_update(self):
+        remain = self.in_stock - self.article_buy
+        return remain
 
-        # Create PDF
-        pdf = FPDF(orientation="P", unit="mm", format="A4")
-        pdf.add_page()
+    def save_updated_stock(self):
+        new_stock = self.stock_update()
 
-        pdf.set_font("Times", size=16, style="B")
-        pdf.cell(0, 8, text=f"Receipt nr. {self.item_id}")
-        pdf.ln(10)
+        if new_stock < 0:
+            print("❌ Not enough stock!")
+            return
 
-        pdf.set_font("Times", size=14)
-        pdf.cell(0, 8, text=f"Article: {article}")
-        pdf.ln(10)
+        # Update dataframe
+        df.loc[df['id'] == self.id, 'in stock'] = new_stock
 
-        pdf.cell(0, 8, text=f"Price: {price}")
-        pdf.ln(10)
+        # Save back to CSV
+        df.to_csv("Resources/articles.csv", index=False)
+        print(f"✅ Stock updated! Remaining stock: {new_stock}")
 
-        pdf.output("receipt.pdf")
+print(df)
+article_ID = input("Choose an article ID: ")
+buy_article = int(input("How many you want to buy: "))
 
+article = Article(article_ID, buy_article)
 
-item1 = Item(100)
-item1.receipt_pdf_print()
+print(article.stock_update())
+article.save_updated_stock()
