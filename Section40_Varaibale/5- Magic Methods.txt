@@ -1,0 +1,159 @@
+Magic Method 
+
+Example 1: 
+
+>> "hello" == "hi"
+False 
+
+>> "hello".__eq__("hi")
+False
+
+Syntactic sugar = Simplified Syntax 
+
+
+- នៅក្នុង Python យើងមិនចាំបាច់ ហៅ Method វាទេ .__eq__ is called from the interpreter 
+
+Example 2: 
+
+>>> 1 + 2
+3
+>>> 1 .__add__(2)
+3
+
+----------------------------------------------
+
+Check the Magic Method :
+
+>>> from main2 import Hotel
+>>> Hotel
+<class 'main2.Hotel'>
+>>> dir(Hotel)
+['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__firstlineno__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__static_attributes__', '__str__', '__subclasshook__', '__weakref__', 'available', 'book', 'get_hotel_count', 'watermark']
+>>> 
+
+
+* How to create Magic Class * 
+
+>>> hotel1 = Hotel("1")
+
+>>> hotel2 = Hotel("1")
+
+>>> hotel1 == hotel2
+
+False
+
+1- Write code :
+
+'__eq__'
+
+
+------------------------------------------
+
+
+    def __eq__(self, other):
+        if self.hotel_id == other.hotel_id:
+            return True
+        else:
+            return False
+
+
+
+----------------------------------------------
+
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from main2 import Hotel
+>>> hotel1 = Hotel("1")
+>>> hotel2 = Hotel("1")
+>>> hotel1 == hotel2
+
+True
+
+
+Example យើងធ្វើការបូក class ចូលគ្នា 
+
+
+    def __add__(self, other):
+        total = self.price + other.price
+        return total 
+
+hotel1 + hotel2 =  totale price of that two hotel 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,188 @@
+Property : the variable need to processing to make (យើងចង់យក instance method នឹងមកធ្វើអីទៀតចឹងបានយើងបង្កើត 
+property )
+
+
+1- Property 
+
+class ReservationTicket:
+    def __init__(self, customer_name, hotel_object):
+        self.customer_name = customer_name
+        self.hotel = hotel_object
+
+    def generate(self):
+        content = f"""
+        Thank you for your reservation!
+        Here are you booking date:
+        Name:{self.customer_name}
+        Hotel name: {self.hotel.name}
+        """
+        return content
+
+    @property
+    def the_customer_name(self):
+        name = self.customer_name.strip()
+        name = name.title()
+        return name
+
+
+This is the class : 
+
+
+    @property
+    def the_customer_name(self):
+        name = self.customer_name.strip()
+        name = name.title()
+        return name
+
+- First need to have : @property 
+
+- When call : 
+
+hotel1 = Hotel("1")
+ticket = ReservationTicket(customer_name="LONG Vibol ", hotel_object=hotel1)
+print(ticket.the_customer_name)
+print(ticket.generate())
+
+- យើងអាច ticket.the_customer_name​ ដោយមិនប្រើ () ព្រោះវាជា property 
+- សម្រាប់ Method យើងត្រូវប្រើ () : ticket.generate()
+
+-----------------------------------------------------------------------
+
+ចឹងយើងបង្កើត Property វាធ្វើអោយកូន Clearn ហើយយើងអាចធ្វើការផ្លាស់ប្តូរតាមអ្វីដែលយើងចង់បាន​
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

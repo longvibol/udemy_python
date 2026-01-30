@@ -1,0 +1,168 @@
+1- Instance variable : is the variable declare in the class
+
+
+class Hotel:
+    watermark = "The Real Estate Company"
+    def __init__(self, hotel_id):
+        self.hotel_id = hotel_id
+        self.name = df.loc[df['id'] == self.hotel_id, 'name'].squeeze()
+
+    def book(self):
+        """Book a hotel by changing the availability to no"""
+        df.loc[df['id'] == self.hotel_id, 'available'] = "no"
+        df.to_csv("hotels.csv", index=False)
+
+    def available(self):
+        availability = df.loc[df['id'] == self.hotel_id, 'available'].squeeze()
+        if availability == 'yes':
+            return True
+        else:
+            return False
+
+==> This is instance variable :  self.hotel_id = hotel_id
+
+
+When we called :
+
+
+hotel1 = Hotel("1")
+hotel2 = Hotel("2")
+
+print(hotel1.name) ==> Tourist Sunny Apartment
+print(hotel2.name) ==> Snow Palace
+
+This hotel1.name = is the instance variable because it instance from the class 
+
+
+2- Class Variable : is the variable declare out side the method and inside the class 
+
+
+print(hotel1.watermark) ==> The Real Estate Company
+print(hotel2.watermark) ==> The Real Estate Company
+
+print(Hotel.watermark) ==> The Real Estate Company
+
+
+But if we print Hotel.name : it will error 
+
+"AttributeError: type object 'Hotel' has no attribute 'name'"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
