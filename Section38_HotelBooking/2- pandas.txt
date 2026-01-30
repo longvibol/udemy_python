@@ -1,0 +1,22 @@
+In pandas :
+
+" .loc is used to select rows and columns by labels or conditions"
+
+Example:
+
+df =   id   name
+
+0  1   Hotel A
+1  2   Hotel B
+2  3   Hotel C
+
+-----------------------------------------------------------------
+
+df.loc[df['id'] == 2, 'name']
+
+==> 1    Hotel B
+
+dtype: object
+
+
+

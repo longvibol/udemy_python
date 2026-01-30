@@ -1,0 +1,16 @@
+syntactiv sugar:
+
+String Class : 
+
+>>> str("Hello")
+'Hello'
+
+
+>>> "Hello"
+'Hello'
+
+==> "Hello" == str("Hello") : it called syntactiv sugar
+
+We no need to write instance like: str("Hello") 
+
+
