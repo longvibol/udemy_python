@@ -1,45 +1,105 @@
-from PyQt6.QtWidgets import QApplication, QVBoxLayout, QLabel, QWidget, QGridLayout, QLineEdit, QPushButton
+import sqlite3
+
+from PyQt6.QtGui import QAction
+from PyQt6.QtWidgets import QApplication, QVBoxLayout, QLabel, QWidget, QGridLayout, QLineEdit, QPushButton, \
+    QMainWindow, QTableWidget, QTableWidgetItem, QDialog, QComboBox
 import sys
 
-from datetime import datetime
-
-
-class AgeCalculator(QWidget):
+class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Age Calculator")
-        grid = QGridLayout()
+        self.setWindowTitle("Student Management System")
 
-        name_label = QLabel("Name:")
-        self.name_line_edit = QLineEdit()
+        self.setFixedWidth(720)
+        self.setFixedHeight(720)
 
-        data_birth_label = QLabel("Data of Brith MM/DD/YYYY")
-        self.date_birth_line_edit = QLineEdit()
+        file_menu_item = self.menuBar().addMenu("&File")
+        help_menu_item = self.menuBar().addMenu("&Help")
+        search_menu_item = self.menuBar().addMenu("&Search")
 
-        calculate_button = QPushButton("Calculate Age")
-        calculate_button.clicked.connect(self.calculate_age)
-        self.output_label = QLabel("")
+        add_student_action = QAction("Add Student", self)
+        add_student_action.triggered.connect(self.insert)
+        file_menu_item.addAction(add_student_action)
 
-        # Add widget to grid
-        grid.addWidget(name_label, 0, 0)
-        grid.addWidget(self.name_line_edit, 0, 1)
-        grid.addWidget(data_birth_label, 1, 0)
-        grid.addWidget(self.date_birth_line_edit, 1, 1)
-        grid.addWidget(calculate_button, 2, 0, 1, 2)
-        # grid.addWidget(calculate_button, 2, 0, 1, 2) row =2, first colum =1, acros 1 row, 2 colum
-        grid.addWidget(self.output_label, 3, 0, 1, 2)
+        about_action = QAction("About", self)
+        help_menu_item.addAction(about_action)
+        about_action.setMenuRole(QAction.MenuRole.NoRole)
 
-        self.setLayout(grid)
+        self.table = QTableWidget()
+        self.table.setColumnCount(4)
+        self.table.setHorizontalHeaderLabels(["ID", "Name", "Course", "Mobile"])
+        self.table.verticalHeader().setVisible(False)
+        self.setCentralWidget(self.table)
 
-    def calculate_age(self):
-        current_year = datetime.now().year
-        date_of_birth = self.date_birth_line_edit.text()
-        year_of_brith = datetime.strptime(date_of_birth, "%m/%d/%Y").date().year
-        age = current_year - year_of_brith
-        self.output_label.setText(f"{self.name_line_edit.text()} is {age} years old.")
+    def load_data(self):
+        connection = sqlite3.connect("database.db")
+        result = connection.execute("SELECT * FROM students")
+
+        self.table.setRowCount(0)
+        for row_numer, row_data in enumerate(result):
+            self.table.insertRow(row_numer)
+            for column_number, data in enumerate(row_data):
+                print(column_number, data)
+                self.table.setItem(row_numer,column_number, QTableWidgetItem(str(data)))
+        connection.close()
+
+    def insert(self):
+        dialog = InsertDialog()
+        dialog.exec()
+
+class InsertDialog(QDialog):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Insert Student Data")
+        self.setFixedWidth(300)
+        self.setFixedHeight(300)
+
+        layout = QVBoxLayout()
+
+        # Add student name widget
+        self.student_name = QLineEdit()
+        self.student_name.setPlaceholderText("Name")
+        layout.addWidget(self.student_name)
+
+        # Add course box of course
+        self.course_name = QComboBox()
+        courses = ["Biology","Math","Astronomy","Physics"]
+        self.course_name.addItems(courses)
+        layout.addWidget(self.course_name)
+
+        # Add mobile widget
+        self.mobile = QLineEdit()
+        self.mobile.setPlaceholderText("Mobile Number")
+        layout.addWidget(self.mobile)
+
+        # Add a submit button
+        button = QPushButton("Register")
+        button.clicked.connect(self.add_student)
+        layout.addWidget(button)
+        self.setLayout(layout)
+
+
+    def add_student(self):
+        name = self.student_name.text()
+        course = self.course_name.itemText(self.course_name.currentIndex())
+        mobile = self.mobile.text()
+
+        # Connect to database
+        connection = sqlite3.connect("database.db")
+        cursor = connection.cursor()
+        cursor.execute("INSERT INTO students (name, course, mobile) VALUES (?, ?, ?)",
+                       (name, course, mobile))
+
+        connection.commit()
+        cursor.close()
+        connection.close()
+        main_window.load_data()
+
 
 app = QApplication(sys.argv)
-age_calculator = AgeCalculator()
-age_calculator.show()
+main_window = MainWindow()
+
+main_window.show()
+main_window.load_data()
 sys.exit(app.exec())
 
