@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7bef178f-7db8-4d10-8ab2-bf31fa1d2ee7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/card_security.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cards.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/overight.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Section17_App1/mytodoapp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Section17_App1/mytodoapp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotels.csv" beforeDir="false" afterPath="$PROJECT_DIR$/hotels.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="7bef178f-7db8-4d10-8ab2-bf31fa1d2ee7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,12 +23,12 @@
     &quot;assignee&quot;: &quot;longvibol&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/longvibol/udemy_python.git&quot;,
-    &quot;accountId&quot;: &quot;dec9042f-7167-4cb2-a1ef-ba4324fd881a&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/longvibol/udemy_python.git",
+    "accountId": "a1aceeff-eb20-4cb1-ad4a-6dc881dab150"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 7
@@ -56,6 +48,7 @@
     "Python.overight.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Section37__OOP1",
     "last_opened_file_path": "C:/Users/home/Desktop/Udemy_Python Course/Section38_HotelBooking/app11-hotel-booking"
   }
 }]]></component>
@@ -97,7 +90,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-0978a7220b69-9867c7d4c0a4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.28294.336" />
+        <option value="bundled-python-sdk-f2b7a9f6281b-6e1f45a539f7-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.29346.142" />
       </set>
     </attachedChunks>
   </component>
