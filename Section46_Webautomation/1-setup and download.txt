@@ -2,11 +2,73 @@
 
 https://googlechromelabs.github.io/chrome-for-testing/
 
-2-
+2-​ create login 
 
 username: tech
 password:Money@168
 
+
+3- locate the element 
+
+3-1 : check in the website by right click then the button or field where you want to locate:
+
+Example1: UserName : 
+
+-----------------------------
+
+<input required="" autocomplete="off" placeholder="UserName" type="text" id="userName" class="mr-sm-2 form-control" value="">
+
+
+------------------------------
+
+
+we chose the is to be the unite one : 
+
+==> username_field = wait.until(EC.visibility_of_element_located((By.ID, "userName")))
+
+
+
+Example2: Password : 
+
+
+---------------------
+
+
+<input required="" autocomplete="off" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&amp;\*])(?=.{8,})$" placeholder="Password" type="password" id="password" class="mr-sm-2 form-control" value="Money@168">
+
+
+----------------------
+
+==> password_field = wait.until(EC.visibility_of_element_located((By.ID, "password")))
+
+
+These method is we use Selenuim : 
+
+username_field = wait.until(EC.visibility_of_element_located((By.ID, "userName")))
+password_field = wait.until(EC.visibility_of_element_located((By.ID, "password")))
+
+
+3-2 : we use the JavaScrip to locate the element 
+
+Ex3: login 
+
+login_button = driver.find_element(By.ID,'login')
+
+
+4- How to use it 
+
+# Fill in username and password
+username_field.send_keys("tech")
+password_field.send_keys("Money@168")
+
+
+- if we use by selement :
+
+>> login_button.click()
+
+- if we use JavaScrip 
+
+driver.execute_script("arguments[0].click();", login_button)
 
 
 
