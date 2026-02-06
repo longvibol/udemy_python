@@ -1,3 +1,18 @@
+1- Import email sender from Django 
+
+from django.core.mail import EmailMessage
+
+message_body = f"A new job application was submitted. Thank you, {first_name}"
+            email_message = EmailMessage("Form submission confirmation", message_body, to=[email])
+            email_message.send()
+
+            messages.success(request, " Form submitted successfully!")
+
+
+Whole code:
+
+-------------------------------------------------------------------------------------------------
+
 from django.shortcuts import render
 from .form import ApplicationForm
 from .models import Form
@@ -25,3 +40,148 @@ def index(request):
 
 
     return render(request, "index.html")
+
+
+----------------------------------------------------------------------------------
+
+2- in the mysite -> setting.py add the user sender 
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = 'vibollong@gmail.com'
+EMAIL_HOST_PASSWORD = 'vdydzkmaukvebhik'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
