@@ -1,0 +1,16 @@
+1- install qrcode 
+
+>> pip install qrcode 
+
+2- install pillow 
+
+>> pip install pillow 
+
+3- code 
+
+import qrcode
+
+image = qrcode.make("https://127.0.0.1:8000")
+
+image.save("qr.png")
+
