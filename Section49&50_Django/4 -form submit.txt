@@ -1,0 +1,91 @@
+Error with CSRF: 
+
+- CSRF verification failed. Request aborted.
+
+==> solve by putting :  {% csrf_token %} inside the form 
+
+
+    <body>
+        <div class="container">
+            <h1 class="mt-4 mb-4">Job Application Form</h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group mb-4">
+                    <label for="first_name">First Name:</label>
+                    <input class="form-control" type="text" id="first_name" name="first_name" required>
+                </div>
+
+
+**  Application Form and model Form **
+
+1- Create application form to get the input from the template form 
+
+from django import forms
+
+class ApplicationForm(forms.Form):
+    first_name = forms.CharField(max_length=80)
+    last_name = forms.CharField(max_length=80)
+    email = forms.EmailField()
+    date = forms.DateField()
+    occupation = forms.CharField(max_length=80)
+
+
+it is difference from the model form that we save to database. it just the variable that we get the input data
+from the template form 
+
+2- in the views.py ( this where we return the value that we get from the template to the model)
+
+from django.shortcuts import render
+from .form import ApplicationForm
+
+def index(request):
+    if request.method == "POST":
+        form = ApplicationForm(request.POST)
+        if form.is_valid():
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            email = form.cleaned_data['email']
+            date = form.cleaned_data['date']
+            occupation = form.cleaned_data['occupation']
+            print(f"hello : {first_name}")
+
+    return render(request, "index.html")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

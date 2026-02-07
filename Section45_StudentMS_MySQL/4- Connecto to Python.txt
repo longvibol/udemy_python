@@ -1,0 +1,22 @@
+1- install 
+
+>> pip install mysql-connector-python
+
+2- connection to database 
+
+class DatabaseConnection:
+    def __init__(self, host="localhost", user="root", password="admin",database="school"):
+        self.host = host
+        self.user= user
+        self.password = password
+        self.database = database
+
+    def connect(self):
+        connection = mysql.connector.connect(host=self.host, user=self.user,
+                                             password=self.password, database=self.database)
+        return connection
+
+3- Query 
+
+in the MySQL we use %s instead of ? 
+

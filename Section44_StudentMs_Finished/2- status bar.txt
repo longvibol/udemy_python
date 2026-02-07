@@ -1,0 +1,191 @@
+1- Create statusbar 
+
+
+# Create status bar and add status bar element
+        statusbar = QStatusBar()
+        self.setStatusBar(statusbar)
+
+
+2- Put the status bar to window :
+
+        hello = QLabel("Hello There!")
+        statusbar.addWidget(hello)
+
+
+----------------------------------------------------------------------------
+
+Apply to the app :
+
+
+1- create status bar 
+
+# Create status bar and add status bar elements
+        self.statusbar = QStatusBar()
+        self.setStatusBar(self.statusbar)
+
+
+2- Detect a cell where you click on
+
+self.table.cellClicked.connect(self.cell_clicked)
+
+
+3- Create function : cell_clicked
+
+    def cell_clicked(self):
+
+        # Create edit button
+        edit_button = QPushButton("Edit Record")
+        edit_button.clicked.connect(self.edit)
+
+        # Create Deleted button
+        delete_button = QPushButton("Delete Record")
+        delete_button.clicked.connect(self.delete)
+
+        children = self.findChildren(QPushButton)
+
+        if children:
+            for child in children:
+                self.statusbar.removeWidget(child)
+
+        self.statusbar.addWidget(edit_button)
+        self.statusbar.addWidget(delete_button)
+
+
+4- create function 
+
+    def edit(self):
+        dialog = EditDialog()
+        dialog.exec()
+
+    def delete(self):
+        dialog = DeleteDialog()
+        dialog.exec()
+
+class EditDialog(QDialog):
+    pass
+
+
+class DeleteDialog(QDialog):
+    pass
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

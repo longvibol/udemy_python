@@ -1,0 +1,19 @@
+
+
+Refactoring mean : 
+
+we rewrite the code then all the flow are working fine. the gold is to make the code easy to read!
+
+
+Keywords:
+
+** code smile : duplicate code ** as below 
+
+- variable with wrong name (bad name)
+- the code have a lot of line 
+- less command 
+- heavy code function 
+
+Ex:
+
+ connection = sqlite3.connect("database.db")
