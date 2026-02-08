@@ -1,0 +1,127 @@
+1-Get the data from data to views.py 
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context["meals"] = MEAL_TYPE
+        return context
+
+whole code:
+
+----------------------------------------------------------
+
+from django.views import generic
+from .models import Item, MEAL_TYPE
+
+class MenuList(generic.ListView):
+    queryset = Item.objects.order_by("-date_created")
+    template_name = "index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context["meals"] = MEAL_TYPE
+        return context
+
+class MenuItemDetail(generic.DetailView):
+    model = Item
+    template_name = "menu_item_detail.html"
+
+------------------------------------------------------------
+
+2- html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Restaurant Menu</h1>
+    {% for meal in meals %}
+        <h2>{{ meal.1 }}</h2>
+            {% for row in item_list %}
+                <h3>{{ row.meal }}</h3>
+                    <p>{{ row.description}}</p>
+        {% endfor %}
+    {% endfor %}
+</body>
+</html>
+
+
+Explain : 
+
+id	meal	description	price	meal_type	status	date_created	date_update	author_id
+1	Salad	From Cambodia	25	salads	1			1
+2	Seafood Pasta	Seafood Pasta	10	starters	1			1
+3	Bean Stev	Bean Stev	20	main_dishes	1			1
+
+
+==>{% for meal in meals %}
+We loop throw the first row : meal and get only the value of Salad, Seafood, Bean Stev
+
+==> {% for row in item_list %} : item_list is come from (Item model and list is the ListView
+
+==> then we can get each item list :  
+
+	<h3>{{ row.meal }}</h3>
+    	<p>{{ row.description}}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
