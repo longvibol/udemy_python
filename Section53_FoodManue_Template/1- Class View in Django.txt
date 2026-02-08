@@ -1,0 +1,148 @@
+Great question 👍 — this is a key concept in Django.
+
+In Django, there are **two ways to write views**:
+
+1. **Function-Based Views (FBV)**
+2. **Class-Based Views (CBV)**
+
+Both can render templates, but they are structured differently.
+
+---
+
+# 1. Function-Based View (FBV)
+
+A view written as a **normal Python function**.
+
+### Example FBV
+
+```python
+from django.shortcuts import render
+from .models import Product
+
+def product_list(request):
+    products = Product.objects.all()
+    return render(request, "products/list.html", {"products": products})
+```
+
+### How template is used
+
+* You call `render(request, template_name, context)`
+* Template is directly specified inside the function.
+
+### Pros 👍
+
+* Simple and easy to understand
+* Good for beginners
+* Flexible for small logic
+
+### Cons 👎
+
+* Code can become long and repeated
+* Hard to reuse logic
+* No built-in structure
+
+---
+
+# 2. Class-Based View (CBV)
+
+A view written as a **Python class**, using Django’s built-in generic views.
+
+### Example CBV
+
+```python
+from django.views.generic import ListView
+from .models import Product
+
+class ProductListView(ListView):
+    model = Product
+    template_name = "products/list.html"
+    context_object_name = "products"
+```
+
+### How template is used
+
+* Template is defined as a class attribute:
+
+  ```python
+  template_name = "products/list.html"
+  ```
+* Django automatically handles:
+
+  * Querying the model
+  * Sending context
+  * Rendering template
+
+### Pros 👍
+
+* Less code
+* Reusable
+* Built-in features (pagination, forms, CRUD)
+
+### Cons 👎
+
+* Harder to understand at first
+* More “magic” behind the scenes
+
+---
+
+# 🔥 Main Differences
+
+| Feature           | Function View   | Class View                |
+| ----------------- | --------------- | ------------------------- |
+| Structure         | Simple function | Python class              |
+| Template usage    | In `render()`   | `template_name` attribute |
+| Reusability       | Low             | High                      |
+| Built-in features | Manual          | Many generic views        |
+| Best for          | Simple logic    | Large projects, CRUD      |
+
+---
+
+# When to use what?
+
+### Use FBV if:
+
+* Small project
+* Custom logic
+* You want full control
+
+### Use CBV if:
+
+* CRUD pages (List, Create, Update, Delete)
+* You want clean reusable code
+* Large scalable project
+
+---
+
+# Same template, different view style
+
+### Template (same for both)
+
+`templates/products/list.html`
+
+```html
+<h1>Products</h1>
+
+{% for p in products %}
+   <p>{{ p.name }} - {{ p.price }}</p>
+{% endfor %}
+```
+
+👉 Template is the SAME
+👉 Only the VIEW style is different.
+
+---
+
+## Simple way to remember
+
+* **FBV = You write everything yourself**
+* **CBV = Django does most work for you**
+
+---
+
+If you want, I can:
+
+✅ Convert one of your FBV code to CBV
+✅ Explain CreateView / UpdateView / DeleteView
+✅ Show how forms work in CBV vs FBV
+
+Just tell me 👍

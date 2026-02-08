@@ -1,0 +1,111 @@
+In Django, **context** means **the data that you send from a view to a template** so the template can display it.
+
+Think of it like this:
+
+👉 **View = Python logic**
+👉 **Template = HTML page**
+👉 **Context = the bridge between them**
+
+---
+
+## 1. Simple Explanation
+
+Context is just a **Python dictionary** that contains variables you want to use inside your HTML template.
+
+### Example
+
+### views.py
+
+```python
+def index(request):
+    context = {
+        "name": "Vibol",
+        "age": 25,
+    }
+    return render(request, "index.html", context)
+```
+
+### index.html
+
+```html
+<h1>Hello {{ name }}</h1>
+<p>Your age is {{ age }}</p>
+```
+
+👉 Output in browser:
+
+```
+Hello Vibol
+Your age is 25
+```
+
+So:
+
+✅ Context = `{"name": "Vibol", "age": 25}`
+✅ Template can access using `{{ name }}`, `{{ age }}`
+
+---
+
+## 2. Real Example with Database
+
+### views.py
+
+```python
+from .models import Product
+
+def product_list(request):
+    products = Product.objects.all()
+
+    context = {
+        "products": products
+    }
+
+    return render(request, "products.html", context)
+```
+
+### products.html
+
+```html
+{% for p in products %}
+    <p>{{ p.name }} - ${{ p.price }}</p>
+{% endfor %}
+```
+
+Here:
+
+* `products` is sent in context
+* Template loops and displays it
+
+---
+
+## 3. Important Points
+
+✔ Context is always a **dictionary**
+✔ Keys = variable names in template
+✔ Values = Python data (string, list, queryset, object…)
+
+### Structure
+
+```python
+context = {
+    "variable_name": value
+}
+```
+
+---
+
+## 4. Without Context → Template is Blind
+
+If you do:
+
+```python
+return render(request, "index.html")
+```
+
+Then `{{ name }}` in template → ❌ nothing (undefined)
+
+---
+
+## 5. Short Definition
+
+> 👉 Context in Django = **data passed from view to template**
