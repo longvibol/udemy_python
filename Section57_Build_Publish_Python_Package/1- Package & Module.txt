@@ -1,0 +1,127 @@
+- Module = is the one single file .py 
+
+- Package = at least two file that put inside the directory 
+
++ library = refer to the Module or Package 
+
+
+1- Testing the package 
+
+create main.py 
+
+import invoice_vibol 
+
+if we don't know what we need to put we can use help in the console 
+
+>> help(invoice_vibol)
+Help on module invoice_vibol:
+NAME
+    invoice_vibol
+FUNCTIONS
+    generate(
+        invoice_path,
+        pdfs_path,
+        image_path,
+        product_id,
+        product_name,
+        amount_purchased,
+        price_per_unit,
+        total_price
+    )
+FILE
+    c:\users\home\desktop\udemy_python course\section57_build_publish_python_package\app20-python-package\invoice_vibol.py
+
+
+2- Create Package 
+
+>> create directory : invoicing
+
+moving the file python to it:
+
+>> invoicing >> invoice.py 
+
+- create file.py :__init__.py
+
+
+-----------------------
+
+
+in the : __init__.py
+
+from .invoice_vibol import generate
+
+
+----------------------
+
+
+==> in the main.py we can use the function name to call the function from the invoice 
+
+from invoicing import generate
+
+generate("invoices", "output", "pythonhow.png",
+                       "product_id","product_name","amount_purchased",
+                       "price_per_unit","total_price")
+
+==> that why is the use full of __init__.py 
+
+from .invoice_vibol import generate : we skip the modul . invoice and we can call the function directly 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
