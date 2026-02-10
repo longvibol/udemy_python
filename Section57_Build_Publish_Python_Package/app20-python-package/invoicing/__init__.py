@@ -1,0 +1,1 @@
+from .invoice_vibol import generate

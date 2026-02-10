@@ -1,0 +1,199 @@
+where we create context in the Django :
+
+context is what variable we define in the viewp.py then it use in the template html 
+
+-Key concept : context is the dictionary that have key : value 
+
+Ex:
+
+context = {"meals":"{Pizza"}\
+
+
+-----------------------------------------
+
+1- views.py 
+
+from django.views import generic
+from .models import Item
+
+class MenuList(generic.ListView):
+    queryset = Item.objects.order_by("-date_created")
+    template_name = "index.html"
+
+    def get_context_data(self):
+        context = {"meals":"Pizza"}
+        return context
+
+class MenuItemDetail(generic.DetailView):
+    model = Item
+    template_name = "menu_item_detail.html"
+
+
+==> explian:
+
+def get_context_data(self):
+        context = {"meals":"Pizza"}
+        return context
+
+
+--> get_context_data(self) : is the defind the context in the Django and need to have this name 
+
+2- in the html : how to display to the views 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1>Restaurant Menu</h1>
+  <h1>{{meals}}</h1>
+</body>
+</html>
+
+
+-------------------------------------------------------------------------
+
+Example : views.py 
+
+    def get_context_data(self):
+        context = {"meals":["Pizza","Pasta"],
+                   "ingredients":["things"]}
+        return context
+
+==> is display items:
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Restaurant Menu</h1>
+    <h1>{{meals}}</h1>
+    <h1>{{meals.1}}</h1>
+    <h3>{{ ingredients }}</h3>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
