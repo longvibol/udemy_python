@@ -1,0 +1,264 @@
++ Content recommendation :
+
+ពេលដែលយើងចូលមើល Movie Kong fu Pandas : 
+
+It have the description then we can compare description to other movie that have similar movie description. 
+
+That what the library : scikit-learn : we will use to do it 
+
+- Compare the description 
+
+>> !pip install scikit-learn
+
+- Term Frequency Inverse Document : tfid 
+
+Deckard Shaw seeks revenge against Dominic Toretto and his family for his comatose brother.
+
+
+1- Analay 
+
+import pandas
+movies = pandas.read_csv("movies_small.csv", sep=";")
+
+movies.head(10)
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+tfidf = TfidfVectorizer(stop_words="english")
+movies["overview"] = movies["overview"].fillna("")
+# To make the empty text not reading 
+
+tfidf_matrix = tfidf.fit_transform(movies["overview"])
+
+
+pandas.DataFrame(tfidf_matrix.toarray(), columns=tfidf.get_feature_names_out())
+
+កន្លែងនឹងវាយក Date description យើងទៅដាក់ក្នុង Vector សម្រាប់អក្សរទាំងអស់ដើម្បីទុក ថ្វើការ compare គ្នារ
+
+tfidf_matrix.shape 
+
+==> (6, 121)
+
+មាន ៦ ជួរដេក និង ១២១ ពាក្យ
+
+---------------------
+
+
+borther = 0.33333 = TFIDF value = it is indicate the word of brother in the description = frequency (or the rawlity of that word) 
+
+- វាក៏មានន័យថាចំនួនដែលវាមាននៅក្នុង ទិន្នន័យទាំងអស់
+
+
+---------------------------------------------------------------------
+
+Similarity maritric 
+
+
+array([[1.        , 0.        , 0.        , ..., 0.        , 0.        ,
+        0.        ],
+       [0.        , 1.        , 0.        , ..., 0.02160533, 0.        ,
+        0.        ],
+       [0.        , 0.        , 1.        , ..., 0.01488159, 0.        ,
+        0.        ],
+       ...,
+       [0.        , 0.02160533, 0.01488159, ..., 1.        , 0.01609091,
+        0.00701914],
+       [0.        , 0.        , 0.        , ..., 0.01609091, 1.        ,
+        0.01171696],
+       [0.        , 0.        , 0.        , ..., 0.00701914, 0.01171696,
+        1.        ]])
+
+
+- យើងមើល Array នឹងវាធ្វើការប្រៀបធៀបទៅនឹង moive ទាំងអស់ 1 គឺ moive ដែលវាស្ថិត្ថនៅ ហើយវាធ្វើការប្រៀធៀប មួយ
+
+
+2- Find similar 
+
+enumerate : function we can convert to the list that have [ index and value ] 
+
+Function find similar movie with title : 
+
+def similar_movies(movie_title, nr_movies):
+    idx = movies.loc[movies["title"] == movie_titile].index[0]
+    scores = list(enumerate(similarity_matrix[idx]))
+    scores = sorted(scores, key= lambda x : x[1], reverse=True)
+    movie_indices = [tpl[0] for tpl in scores[1:nr_movies+1]]
+    similar_titiles = list(movies["title"].iloc[movie_indices])
+    return similar_titiles
+
+
+Explain step by step :
+
+1- find index 
+
+idx = movies.loc[movies["title"] == movie_titile].index[0]
+
+2- find the score :
+
+from sklearn.metrics.pairwise import linear_kernel
+similarity_matrix = linear_kernel(tfidf_matrix, tfidf_matrix)
+
+scores = list(enumerate(similarity_matrix[idx]))
+
+យើងដាក់វាជា list ដើម្បីចង់បាន index from the list of result : 
+
+[(0, 0.0),
+ (1, 0.022590565795326856),
+ (2, 0.0),
+ (3, 0.032138674066915646),
+ (4, 0.016120240648257757),
+ (5, 1.0000000000000004)]
+
+3- sorting the list 
+
+scores = sorted(scores, key= lambda x : x[1], reverse=True)
+
+
+- we use lamda expression to create the function that sort after 1 index (because index 1 is our self) 
+[(0, 0.0), = index 0
+ (1, 0.022590565795326856), = index 1]
+
+
+4- យើងអត់ទៅយកលទ្ធផលទាំងអស់ទេយើងយកតែ ចំនួនដែលចង់បានទេ
+Number of similar movie index 
+
+movie_indices = [tpl[0] for tpl in scores[1:4]]
+
+5- from index we seleted we get the movie from the main data 
+
+list(movies["title"].iloc[movie_indices])
+
+==> ['Kung Fu Panda 3', 'Cars 2', 'The Dark Knight Rises']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
