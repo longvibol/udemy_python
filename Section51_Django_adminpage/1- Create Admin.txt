@@ -1,0 +1,15 @@
+1- create admin user
+
+>> python .\manage.py createsupperuser
+
+
+2- import the form to the admin page 
+
+- in the application : add the form to the admin 
+
+from django.contrib import admin
+from . models import Form
+
+admin.site.register(Form)
+
+

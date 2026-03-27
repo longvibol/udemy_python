@@ -1,0 +1,8 @@
+setup.py
+invoicing/__init__.py
+invoicing/invoice_vibol.py
+invoicing_fdp.egg-info/PKG-INFO
+invoicing_fdp.egg-info/SOURCES.txt
+invoicing_fdp.egg-info/dependency_links.txt
+invoicing_fdp.egg-info/requires.txt
+invoicing_fdp.egg-info/top_level.txt

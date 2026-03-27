@@ -1,0 +1,167 @@
+1- In the app : restaurant menu - template with class view 
+
+1.1- create views.py 
+
+- we use the class template 
+
+from django.views import generic
+from .models import Item
+
+class MenuList(generic.ListView):
+    queryset = Item.objects.order_by("-date_created")
+    template_name = "index.html"
+
+class MenuItemDetail(generic.DetailView):
+    model = Item
+    template_name = "menu_item_detail.html"
+
+
+---------------------
+
+Explain :
+- queryset : it take the model from the database 
+- template_name : where we give our template (hmtl )
+
+They are the predefine from the generic.ListView in the Django 
+
+Note: but if we use Function view, it need the render 
+
+
+1.2- create urls.py (route)
+
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.MenuList.as_view(), name='menu')
+]
+
+
+Note: views.MenuList.as_view() : as_view is what we use for the class template view
+
+
+*** Register the the path to the main project ***
+
+Go to the main project urls.py then register the urls from the app 
+
+from django.urls import path,include
+
+path('', include('restaurant_menu.urls'))
+
+whole code:
+
+--------------------------------------------------
+
+from django.contrib import admin
+from django.urls import path,include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('restaurant_menu.urls'))
+]
+
+
+-------------------------------------------------
+
+
+
+
+
+===========================================
+
+2- register the view to the main project 
+
+
+
+
+there are two option that we can create the template :
+
+2.1 we put the templates out side the app :
+
+==> we need to put in the setting in the project settting to make the Django and scan when it start the page :
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': ['templates'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+
+==> 
+
+--------------------------------
+
+Best recommend : we put the templates inside the app : restaurant_menu 
+
+
+
+3- How to run in specific port in the Django 
+
+>> python manage.py runserver 8002
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

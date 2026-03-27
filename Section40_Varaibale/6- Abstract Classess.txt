@@ -1,0 +1,151 @@
+1-Abstract Class and Abstract Method 
+
+Abstract Class : is to define the structure basely (define the root or the rule) 
+
+យើងប្រើវានៅពេលគ្រាប់ class ទាំងអស់ត្រូវតែមាន វា It a must to have it 
+
+ABC : Abstract Base Class 
+
+- We can not create instance from Abstract class 
+
+Example:
+
+from abc import ABC, abstractmethod
+
+
+class Ticket(ABC):
+    @abstractmethod
+    def generate(self):
+        pass
+
+class DigitalTicket(Ticket):
+    def generate(self):
+        pass
+
+
+class ReservationTicket(Ticket):
+    def __init__(self, customer_name, hotel_object):
+        self.customer_name = customer_name
+        self.hotel = hotel_object
+
+
+--------------------------------------------------------------------------
+
+class Ticket(ABC):
+    @abstractmethod
+    def generate(self):
+        pass
+
+
+យើងត្រូវធ្វើការ extend from ABC : this is the main class for the Abstract 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

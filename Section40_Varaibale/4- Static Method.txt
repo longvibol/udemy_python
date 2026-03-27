@@ -1,0 +1,83 @@
+Static Method 
+
+- ពេលដែលយើងចង់បង្កើត Utility មានន័យថា យើងចង់បន្ថែម
+
+    @staticmethod
+    def convert(amount):
+        return amount * 1.2
+
+print(ReservationTicket.convert(200))
+
+it is lease associate with the class. we just use it for the utility 
+
+
+----------------------------------------------------------
+
+class ReservationTicket:
+    def __init__(self, customer_name, hotel_object):
+        self.customer_name = customer_name
+        self.hotel = hotel_object
+
+    def generate(self):
+        content = f"""
+        Thank you for your reservation!
+        Here are you booking date:
+        Name:{self.customer_name}
+        Hotel name: {self.hotel.name}
+        """
+        return content
+
+    @property
+    def the_customer_name(self):
+        name = self.customer_name.strip()
+        name = name.title()
+        return name
+
+    @staticmethod
+    def convert(amount):
+        return amount * 1.2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

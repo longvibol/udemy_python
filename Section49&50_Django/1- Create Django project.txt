@@ -1,0 +1,33 @@
+1- install Django 
+
+>> pip install Django 
+
+2- create project 
+
+>> django-admin startproject mysite .
+
+3- create app
+
+>> python manage.py startapp job_application
+
+4- run app
+
+>> python manage.py runserver
+
+5- Add app to the project 
+
+Go to setting.py add our app name to the list 
+
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'job_application',
+] 
+
+
+

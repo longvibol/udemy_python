@@ -1,0 +1,104 @@
+1- get the populate item 
+
+class MenuItemDetail(generic.DetailView):
+    model = Item
+    template_name = "menu_item_detail.html"
+
+this class in the views.py it will sent the model that we have to the item variable 
+
+==> mean we can use the item keyword to display on the html page :
+
+because Item is represent of the model that we create :
+
+
+class Item(models.Model):
+    meal = models.CharField(max_length=1000, unique=True)
+    description = models.CharField(max_length=2000)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    meal_type = models.CharField(max_length=200, choices=MEAL_TYPE)
+    author = models.ForeignKey(User, on_delete=models.PROTECT)
+    status = models.IntegerField(choices=STATUS, default=1)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_update = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return  self.meal
+
+
+==> you see the class Item (==> Django will convert it to the variable that we can use to disply in he html )
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>{{ item.meal }}</h1>
+    <h1>{{ item.description }}</h1>
+    <h1>{{ item.price }}</h1>
+</body>
+</html>
+
+
+2- link to from main page to dynamic url 
+
+in the app urls.py 
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.MenuList.as_view(), name='home'),
+    path('item/<int:pk>/', views.MenuItemDetail.as_view(),name="menu_item"),
+]
+
+
+==> path('item/<int:pk>/', views.MenuItemDetail.as_view(),name="menu_item"),
+
+- item/<int:pk> = is the suburls that will use for render from : views.MenuItemDetail
+- <int:pk> = in the database it create pk = primary key for the unite item in the database 
+
+3- link in the main page 
+
+ <a href="{% url 'menu_item' row.pk %}"><del><h3>{{ row.meal }}</h3></del></a>
+
+
+- url = represent the link tag
+- 'menu_item' = is the name in the :path('item/<int:pk>/', views.MenuItemDetail.as_view(),name="menu_item"),
+
+- row.pk : is what primary key when they click to the link 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

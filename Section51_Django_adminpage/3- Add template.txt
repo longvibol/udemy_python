@@ -1,0 +1,159 @@
+1- Create template : base.html 
+
+ <body>
+            {% block content %}
+            {% endblock %}
+
+ </body>
+
+
+2- extends template to other page :
+
+---------------------------------------
+
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="mt-4 mb-4">About page</h1>
+
+{% endblock %}
+
+--------------------------------------
+
+
+3- create function : view.py 
+
+-------------------------------------
+
+def about(request):
+    return render(request, "about.html")
+
+
+-------------------------------------
+
+
+4- create return page in the urls.py : function return view (route)
+
+---------------------------------------
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.index, name = 'index'),
+    path('about/', views.about, name = 'about')
+]
+
+
+----------------------------------------
+
+
+Whole code :
+
+1- index.html 
+
+{% extends 'base.html'%}
+{% block content %}
+<h1 class="mt-4 mb-4">Job Application Form</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group mb-4">
+        <label for="first_name">First Name:</label>
+        <input class="form-control" type="text" id="first_name" name="first_name" required>
+    </div>
+    <div class="form-group mb-4">
+        <label for="last_name">Last Name:</label>
+        <input class="form-control" type="text" id="last_name" name="last_name" required>
+    </div>
+    <div class="form-group mb-4">
+        <label for="email">Email:</label>
+        <input class="form-control" type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group mb-4">
+        <label for="date">Available start date:</label>
+        <input class="form-control" type="date" id="date" name="date" required>
+    </div>
+    <div class="form-group mb-4">
+        <label>Current occupation: </label>
+        <br>
+        <div class="btn-group-vertical" id="occupation">
+            <input class="btn-check form-control" type="radio" id="employed" name="occupation" value="employed" required>
+            <label class="btn btn-outline-secondary" for="employed">Employed</label>
+
+            <input class="btn-check form-control" type="radio" id="unemployed" name="occupation" value="unemployed" required>
+            <label class="btn btn-outline-secondary" for="unemployed">Unemployed</label>
+
+            <input class="btn-check form-control" type="radio" id="self-employed" name="occupation" value="self-employed" required>
+            <label class="btn btn-outline-secondary" for="self-employed">Self-Employed</label>
+
+            <input class="btn-check form-control" type="radio" id="student" name="occupation" value="student" required>
+            <label class="btn btn-outline-secondary" for="student">Student</label>
+        </div>
+    </div>
+    <button class="btn btn-secondary mb-4" type="submit">Submit</button>
+    {% if messages %}
+    <div class="alert alert-success">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+    {% endif %}
+</form>
+{% endblock %}
+
+2- base.html 
+
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="mt-4 mb-4">About page</h1>
+
+{% endblock %}
+
+3- views.py
+
+from django.shortcuts import render
+from .form import ApplicationForm
+from .models import Form
+from django.contrib import messages
+from django.core.mail import EmailMessage
+
+def index(request):
+    if request.method == "POST":
+        form = ApplicationForm(request.POST)
+        if form.is_valid():
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            email = form.cleaned_data['email']
+            date = form.cleaned_data['date']
+            occupation = form.cleaned_data['occupation']
+
+            Form.objects.create(first_name=first_name, last_name=last_name,
+                                email=email, date=date, occupation=occupation)
+
+            # Send email code
+            # message_body = f"A new job application was submitted. Thank you, {first_name}"
+            # email_message = EmailMessage("Form submission confirmation", message_body, to=[email])
+            # email_message.send()
+
+            messages.success(request, " Form submitted successfully!")
+
+
+    return render(request, "index.html")
+
+def about(request):
+    return render(request, "about.html")
+
+4- urls.py
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.index, name = 'index'),
+    path('about/', views.about, name = 'about')
+]
+
+
+
+

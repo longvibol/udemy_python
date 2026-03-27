@@ -1,0 +1,17 @@
+import pandas
+
+>>> df_cards = pandas.read_csv("cards.csv", dtype=str).to_dict(orient="records")
+
+>>> df_cards
+
+This is the Set of Dictionary : 
+
+[
+
+{'number': '1234', 'expiration': '12/26', 'cvc': '123', 'holder': 'JOHN SMITH'}, 
+
+{'number': '5678', 'expiration': '12/28', 'cvc': '456', 'holder': 'JANE SMITH'}
+
+]
+
+
